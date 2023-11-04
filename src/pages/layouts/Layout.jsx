@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
@@ -11,7 +11,7 @@ export default function Layout() {
             <img src="../src/assets/web-logo.png" className="w-10 -mt-4 -ml-6"/></li>
           <li>
             <ul className="flex gap-12">
-            <li>Home</li>
+            <li><Link to="/">Home</Link></li>
             <li>Books</li>
             <li>Commission</li>
             <li>Origianl Arts</li>
