@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <img src="../src/assets/backdrop.png" className="mt-3" />
+      <img src="../src/assets/cover.jpg" className="w-full" />
 
       <div className="mt-10 text-center text-2xl">
         <h2>Collection list</h2>
