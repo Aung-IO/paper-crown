@@ -68,7 +68,7 @@ function Home() {
             </li>
 
             <li className="mx-24">
-              <button class="bg-white hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border-2 border-black  rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+              <button className="bg-white hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border-2 border-black  rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                 LEARN MORE
               </button>
             </li>
