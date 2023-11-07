@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Contact from "../components/Contact";
 import Books from "../pages/Books";
 import Commission from "../pages/Commission";
 import Error from "../pages/Error";
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/commission",
         element: <Commission />,
+      },
+      {
+        path: "/contact",
+        element: <Contact/>,
       },
       
     ],

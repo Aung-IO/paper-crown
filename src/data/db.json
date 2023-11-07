@@ -1,0 +1,41 @@
+{
+    "books": [
+      {
+        "id": 1,
+        "title": "Salmon",
+        "description": "The Salmon is a graphic novel by award-winning cartoon artist Jae-Kwang Park.  The original idea for the graphic novel came from his grandmother's childhood.",
+        "price" : "$30.00",
+        "Dimension" : "9.25” x 12.2” (23.5 x 31 cm)",
+        "pages" : 39,
+        "categories": [
+          "Dong Ho Kim"
+          
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Nemiri Book",
+        "description": "Nicolas very first artwork collection 'Nemiri Book' has been published in 2017.",
+        "price" : "$45.00",
+        "Dimension" : "11” x 9.1” (28x 22.5 cm)",
+        "pages" : 240,
+        "categories": [
+          "Hans Olo"
+          
+        ]
+      },
+      {
+        "id": 3,
+        "title": "OMPHALOS",
+        "description": "OMPHALOS is a compilation of masterful drawings from the sensual imaginings of Kim Jung Gi. ",
+        "price" : "$110.00",
+        "Dimension" : "11H x 8.5",
+        "pages" : 336,
+        "categories": [
+          "Kim Jung Gi"
+          
+        ]
+      }
+      
+    ]
+  }
