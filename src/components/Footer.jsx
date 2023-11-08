@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     // <!-- Footer container -->
-    <footer className=" text-center lg:text-left mt-5 m-5">
-      <div className="flex items-center justify-center border-b-2 p-6  lg:justify-between">
+    <footer className=" text-center lg:text-left mt-2">
+      <div className="flex items-center justify-center border-b-2 p-4 lg:justify-between">
         <div className="mr-12 hidden lg:block">
           <span>Get connected with us on social networks:</span>
         </div>

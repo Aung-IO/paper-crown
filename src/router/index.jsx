@@ -4,6 +4,7 @@ import Books from "../pages/Books";
 import Commission from "../pages/Commission";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
+import BookDetail from "../pages/BookDetail";
 import Layout from "../pages/layouts/Layout";
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/books",
         element: <Books />,
+      },
+      {
+        path: "/books/:id",
+        element: <BookDetail/>,
       },
       {
         path: "/commission",
