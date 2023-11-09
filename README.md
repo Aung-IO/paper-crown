@@ -6,11 +6,18 @@ PaperCrown is for studio project which shows the artworks of various artists fro
 
 ## Deployment
 
-To deploy this project run
+To deploy this project run on Windows
 
 ```bash
   npm i vite
   npm i -g json-server // move to cloud later
+```
+
+To deploy this project run on Ubuntu
+
+```bash
+  npm install --save-dev create-vite
+  npm install -g json-server  // move to cloud later
 ```
 
 
@@ -18,3 +25,4 @@ To deploy this project run
 
 - Light/dark mode toggle
 - Cross platform
+
