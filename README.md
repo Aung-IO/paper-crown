@@ -1,8 +1,20 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# PaperCrown
 
-Currently, two official plugins are available:
+PaperCrown is for studio project which shows the artworks of various artists from studio. And also some footages of gaming project by the studio.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  npm i vite
+  npm i -g json-server // move to cloud later
+```
+
+
+## Features
+
+- Light/dark mode toggle
+- Cross platform
