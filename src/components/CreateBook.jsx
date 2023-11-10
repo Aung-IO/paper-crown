@@ -6,74 +6,83 @@ export default function CreateBook() {
   let [dimension, setDimension] = useState("");
   let [pages, setPages] = useState("");
   let [newCategory, setNewCategory] = useState("");
+  let [categories, setCategories] = useState([]);
+
+  let addCategory = (e) => {
+    setCategories((prev) => [newCategory, ...prev]);
+    setNewCategory("");
+  };
   return (
-    <div class="w-full max-w-lg mx-auto mt-4">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
+    <div className="w-full max-w-lg mx-auto mt-4">
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className="mb-4">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2"
-            for="book title"
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="book title"
           >
             Book Title {title}
           </label>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Book Title"
           />
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="price"
+          >
             Price
           </label>
           <input
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Sale Price"
           />
         </div>
-        <div class="mb-4">
+        <div className="mb-4">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2"
-            for="dimension"
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="dimension"
           >
             Dimension
           </label>
           <input
             value={dimension}
             onChange={(e) => setDimension(e.target.value)}
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Book Dimension"
           />
         </div>
-        <div class="mb-4">
+        <div className="mb-4">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2"
-            for="dimension"
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="dimension"
           >
             Pages
           </label>
           <input
             value={pages}
             onChange={(e) => setPages(e.target.value)}
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Total Pages"
           />
         </div>
-        <div class="mb-4">
+        <div className="mb-4">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2"
-            for="dimension"
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="dimension"
           >
             Book Category
           </label>
@@ -81,12 +90,12 @@ export default function CreateBook() {
             <input
               value={newCategory}
               onChange={(e) => setNewCategory(e.target.value)}
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Category"
             />
-            <button>
+            <button onClick={addCategory} type="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -103,26 +112,36 @@ export default function CreateBook() {
               </svg>
             </button>
           </div>
+          <div className="flex flex-wrap mt-2">
+            {categories.map((category) => (
+              <span
+                key={category}
+                className="mx-1 my-1 px-2 py-1 text-sm bg-white border border-gray-400 rounded-md shadow"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
         </div>
-        <div class="mb-4">
+        <div className="mb-4">
           <label
-            class="block text-gray-700 text-sm font-bold mb-2"
-            for="dimension"
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="dimension"
           >
             Book Description
           </label>
           <textarea
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
             placeholder="Description"
           />
         </div>
-        <div class="md:flex md:items-center">
-          <div class="md:w-1/3"></div>
-          <div class="md:w-2/3">
+        <div className="md:flex md:items-center">
+          <div className="md:w-1/3"></div>
+          <div className="md:w-2/3">
             <button
-              class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="button"
             >
               Create
