@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CreateBook from "./CreateBook";
 
 export default function Navbar() {
+  let navigate = useNavigate();
+  const createBook = () => {
+    let path = "/create";
+    navigate(path);
+  };
   return (
     <nav>
       <ul className="flex justify-around mt-4 ">
@@ -37,13 +43,31 @@ export default function Navbar() {
         <li>
           <ul className="flex gap-6">
             <li>
+              <button onClick={createBook}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </li>
+            <li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -59,7 +83,7 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
@@ -75,7 +99,7 @@ export default function Navbar() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="w-5 h-5"
               >
                 <path
                   strokeLinecap="round"
