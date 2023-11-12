@@ -7,7 +7,7 @@
       "price": "$30.00",
       "dimension": "9.25” x 12.2” (23.5 x 31 cm)",
       "pages": 39,
-      "authors": [
+      "categories": [
         "Dong Ho Kim"
       ]
     },
@@ -18,7 +18,7 @@
       "price": "$45.00",
       "dimension": "11” x 9.1” (28x 22.5 cm)",
       "pages": 240,
-      "authors": [
+      "categories": [
         "Hans Olo"
       ]
     },
@@ -29,7 +29,7 @@
       "price": "$110.00",
       "dimension": "11H x 8.5",
       "pages": 336,
-      "authors": [
+      "categories": [
         "Kim Jung Gi"
       ]
     },
@@ -40,62 +40,42 @@
       "price": "$110.00",
       "dimension": "11H x 8.5",
       "pages": 336,
-      "authors": [
+      "categories": [
         "Kim Jung Gi"
       ]
-    },
-    {
-      "title": "addda",
-      "price": "das",
-      "dimension": "adad",
-      "pages": "das",
-      "categories": [
-        "fa",
-        "da"
-      ],
-      "id": 5
-    },
-    {
-      "title": "addda",
-      "price": "das",
-      "dimension": "adad",
-      "pages": "das",
-      "categories": [
-        "fa",
-        "da"
-      ],
-      "id": 6
-    },
-    {
-      "title": "addda",
-      "price": "das",
-      "dimension": "adad",
-      "pages": "das",
-      "categories": [
-        "fa",
-        "da"
-      ],
-      "id": 7
     },
     {
       "title": "Nova Comic",
       "price": "$20",
       "dimension": "12*12",
       "pages": "12",
+      "description": "This is Nova's Art",
       "categories": [
-        "comic"
+        "nova"
       ],
-      "id": 8
+      "id": 5
     },
     {
       "title": "Soka comic",
       "price": "$30",
       "dimension": "10 * 10",
       "pages": "4",
+      "description": "This is Soka's Art",
       "categories": [
         "soka"
       ],
-      "id": 9
+      "id": 6
+    },
+    {
+      "title": "WarPu's Art",
+      "price": "20",
+      "dimension": "10 * 10",
+      "pages": "12",
+      "categories": [
+        "WarPu"
+      ],
+      "description": "This is WarPu's Art",
+      "id": 7
     }
   ]
 }

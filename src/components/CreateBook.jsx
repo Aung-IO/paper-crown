@@ -7,6 +7,7 @@ export default function CreateBook() {
   let [price, setPrice] = useState("");
   let [dimension, setDimension] = useState("");
   let [pages, setPages] = useState("");
+  let [description, setDescription] = useState("");
   let [newCategory, setNewCategory] = useState("");
   let [categories, setCategories] = useState([]);
 
@@ -16,6 +17,10 @@ export default function CreateBook() {
   );
   let navigate = useNavigate();
   let addCategory = (e) => {
+    if (newCategory && categories.includes(newCategory)) {
+      setNewCategory("");
+      return;
+    }
     setCategories((prev) => [newCategory, ...prev]);
     setNewCategory("");
   };
@@ -28,6 +33,7 @@ export default function CreateBook() {
       dimension,
       pages,
       categories,
+      description,
     };
     setPostData(data);
   };
@@ -157,6 +163,8 @@ export default function CreateBook() {
             Book Description
           </label>
           <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"

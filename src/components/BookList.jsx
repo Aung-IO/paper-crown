@@ -29,12 +29,18 @@ function BookList() {
                 <img src={cover} alt="" />
                 <div className="text-center space-y-2 mt-3">
                   <h1>{book.title}</h1>
-                  <p>{book.price}</p>
+                  <p>${book.price}</p>
                 </div>
               </div>
             </Link>
           ))}
         </div>
+      )}
+
+      {books && !books.length && (
+          <p className="text-center text-xl font-bold">
+          Hmmm, we didn't find anything for "{search}"
+        </p>
       )}
     </div>
   );

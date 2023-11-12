@@ -15,7 +15,7 @@ function Filter() {
         <div>
           {books.map((book) => (
             <div className="mt-1" key={book.id}>
-              <input type="checkbox" /> {book.authors}
+              <input type="checkbox" /> {book.categories}
             </div>
           ))}
         </div>
