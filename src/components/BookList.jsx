@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import cover from "../assets/book_cover.png";
 import useFetch from "../hooks/useFetch";
-import { Link } from "react-router-dom";
 
 function BookList() {
   let { data: books, loading, error } = useFetch("http://localhost:3000/books");
@@ -15,9 +15,9 @@ function BookList() {
     
       {/* book list */}
       {!!books && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3" >
           {books.map((book) => (
-            <Link to={`/books/${book.id}`}>
+            <Link to={`/books/${book.id}`} key={book.id}>
              <div className="p-4">
               <img src={cover} alt="" />
               <div className="text-center space-y-2 mt-3">

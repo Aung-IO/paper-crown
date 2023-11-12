@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 export default function CreateBook() {
   let [title, setTitle] = useState("");
@@ -8,25 +10,49 @@ export default function CreateBook() {
   let [newCategory, setNewCategory] = useState("");
   let [categories, setCategories] = useState([]);
 
+  let { setPostData, data: book } = useFetch(
+    "http://localhost:3000/books",
+    "POST"
+  );
+  let navigate = useNavigate();
   let addCategory = (e) => {
     setCategories((prev) => [newCategory, ...prev]);
     setNewCategory("");
   };
+
+  let addBook = (e) => {
+    e.preventDefault();
+    let data = {
+      title,
+      price,
+      dimension,
+      pages,
+      categories,
+    };
+    setPostData(data);
+  };
+
+  useEffect(() => {
+    if (book) {
+      navigate("/books");
+    }
+  }, [book]);
+
   return (
-    <div className="w-full max-w-lg mx-auto mt-4">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form className="w-full max-w-lg mx-auto mt-4" onSubmit={addBook}>
+      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="book title"
           >
-            Book Title {title}
+            Book Title
           </label>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
+            id="book_title"
             type="text"
             placeholder="Book Title"
           />
@@ -42,7 +68,7 @@ export default function CreateBook() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
+            id="price"
             type="text"
             placeholder="Sale Price"
           />
@@ -58,7 +84,7 @@ export default function CreateBook() {
             value={dimension}
             onChange={(e) => setDimension(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
+            id="dimension"
             type="text"
             placeholder="Book Dimension"
           />
@@ -66,7 +92,7 @@ export default function CreateBook() {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="dimension"
+            htmlFor="pages"
           >
             Pages
           </label>
@@ -74,7 +100,7 @@ export default function CreateBook() {
             value={pages}
             onChange={(e) => setPages(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
+            id="pages"
             type="text"
             placeholder="Total Pages"
           />
@@ -82,18 +108,18 @@ export default function CreateBook() {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="dimension"
+            htmlFor="author"
           >
-            Book Category
+            Author
           </label>
           <div className="flex space-x-2">
             <input
               value={newCategory}
               onChange={(e) => setNewCategory(e.target.value)}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
+              id="author"
               type="text"
-              placeholder="Category"
+              placeholder="Author"
             />
             <button onClick={addCategory} type="button">
               <svg
@@ -142,13 +168,13 @@ export default function CreateBook() {
           <div className="md:w-2/3">
             <button
               className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-              type="button"
+              type="submit"
             >
               Create
             </button>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

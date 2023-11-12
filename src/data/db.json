@@ -1,53 +1,101 @@
 {
-    "books": [
-      {
-        "id": 1,
-        "title": "Salmon",
-        "description": "The Salmon is a graphic novel by award-winning cartoon artist Jae-Kwang Park.  The original idea for the graphic novel came from his grandmother's childhood.",
-        "price" : "$30.00",
-        "dimension" : "9.25” x 12.2” (23.5 x 31 cm)",
-        "pages" : 39,
-        "authors": [
-          "Dong Ho Kim"
-          
-        ]
-      },
-      {
-        "id": 2,
-        "title": "Nemiri Book",
-        "description": "Nicolas very first artwork collection 'Nemiri Book' has been published in 2017.",
-        "price" : "$45.00",
-        "dimension" : "11” x 9.1” (28x 22.5 cm)",
-        "pages" : 240,
-        "authors": [
-          "Hans Olo"
-          
-        ]
-      },
-      {
-        "id": 3,
-        "title": "OMPHALOS",
-        "description": "OMPHALOS is a compilation of masterful drawings from the sensual imaginings of Kim Jung Gi. ",
-        "price" : "$110.00",
-        "dimension" : "11H x 8.5",
-        "pages" : 336,
-        "authors": [
-          "Kim Jung Gi"
-          
-        ]
-      },
-      {
-        "id": 4,
-        "title": "OMPHALOS",
-        "description": "OMPHALOS is a compilation of masterful drawings from the sensual imaginings of Kim Jung Gi. ",
-        "price" : "$110.00",
-        "dimension" : "11H x 8.5",
-        "pages" : 336,
-        "authors": [
-          "Kim Jung Gi"
-          
-        ]
-      }
-      
-    ]
-  }
+  "books": [
+    {
+      "id": 1,
+      "title": "Salmon",
+      "description": "The Salmon is a graphic novel by award-winning cartoon artist Jae-Kwang Park.  The original idea for the graphic novel came from his grandmother's childhood.",
+      "price": "$30.00",
+      "dimension": "9.25” x 12.2” (23.5 x 31 cm)",
+      "pages": 39,
+      "authors": [
+        "Dong Ho Kim"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Nemiri Book",
+      "description": "Nicolas very first artwork collection 'Nemiri Book' has been published in 2017.",
+      "price": "$45.00",
+      "dimension": "11” x 9.1” (28x 22.5 cm)",
+      "pages": 240,
+      "authors": [
+        "Hans Olo"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "OMPHALOS",
+      "description": "OMPHALOS is a compilation of masterful drawings from the sensual imaginings of Kim Jung Gi. ",
+      "price": "$110.00",
+      "dimension": "11H x 8.5",
+      "pages": 336,
+      "authors": [
+        "Kim Jung Gi"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "OMPHALOS",
+      "description": "OMPHALOS is a compilation of masterful drawings from the sensual imaginings of Kim Jung Gi. ",
+      "price": "$110.00",
+      "dimension": "11H x 8.5",
+      "pages": 336,
+      "authors": [
+        "Kim Jung Gi"
+      ]
+    },
+    {
+      "title": "addda",
+      "price": "das",
+      "dimension": "adad",
+      "pages": "das",
+      "categories": [
+        "fa",
+        "da"
+      ],
+      "id": 5
+    },
+    {
+      "title": "addda",
+      "price": "das",
+      "dimension": "adad",
+      "pages": "das",
+      "categories": [
+        "fa",
+        "da"
+      ],
+      "id": 6
+    },
+    {
+      "title": "addda",
+      "price": "das",
+      "dimension": "adad",
+      "pages": "das",
+      "categories": [
+        "fa",
+        "da"
+      ],
+      "id": 7
+    },
+    {
+      "title": "Nova Comic",
+      "price": "$20",
+      "dimension": "12*12",
+      "pages": "12",
+      "categories": [
+        "comic"
+      ],
+      "id": 8
+    },
+    {
+      "title": "Soka comic",
+      "price": "$30",
+      "dimension": "10 * 10",
+      "pages": "4",
+      "categories": [
+        "soka"
+      ],
+      "id": 9
+    }
+  ]
+}
