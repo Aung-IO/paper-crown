@@ -1,8 +1,35 @@
-import React from "react";
-import BookList from "../components/BookList";
-import Filter from "../components/Filter";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import cover from "../assets/book_cover.png";
+import useFetch from "../hooks/useFetch";
 
 export default function Books() {
+  let location = useLocation();
+  let param = new URLSearchParams(location.search);
+  let search = param.get("search");
+  let filter = param.get("author");
+  let [filtered, setFiltered] = useState("");
+  let navigate = useNavigate();
+  let handleFilter = (e) => {
+     navigate("/books/?author=" + filtered);
+     setFiltered('')
+     console.log(filtered);
+   
+  };
+
+  let {
+    data: books,
+    loading,
+    error,
+  } = useFetch(
+    `http://localhost:3000/books${search ? `?q=${search}` : ""}${
+      filter ? `?q=${filter}` : ""
+    }`
+  );
+
+  if (error) {
+    return <p>{error}</p>;
+  }
   return (
     <>
       <div className="text-5xl text-center items-center p-14 font-mono bg-zinc-50">
@@ -11,11 +38,60 @@ export default function Books() {
 
       <div>
         <ul className="flex m-8">
+          {/* Filter */}
           <li className="w-1/5 p-5">
-            <Filter />
+            <div>
+              {loading && <p>Loading...</p>}
+              <p className="text-sm text-gray-400 font-mono border-b-2 p-1">
+                FILTERS
+              </p>
+              {!!books && (
+                <div>
+                  {[...new Set(books.map((book) => book.author))].map(
+                    (a, index) => (
+                      <div className="mt-1 flex" key={index}>
+                        <input
+                          type="checkbox"
+                          value={filtered}
+                          onClick={(e) => setFiltered(a)}
+                          
+                        />
+                        <button onClick={handleFilter}>{a}</button>
+                      </div>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
           </li>
+          {/* Book List */}
           <li className="w-4/5">
-            <BookList />
+            <div>
+              {loading && <p>loading ... </p>}
+
+              {/* book list */}
+              {!!books && (
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3">
+                  {books.map((book) => (
+                    <Link to={`/books/${book.id}`} key={book.id}>
+                      <div className="p-4">
+                        <img src={cover} alt="" />
+                        <div className="text-center space-y-2 mt-3">
+                          <h1>{book.title}</h1>
+                          <p>${book.price}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {books && !books.length && (
+                <p className="text-center text-xl font-bold">
+                  Hmmm, we didn't find anything for "{search}"
+                </p>
+              )}
+            </div>
           </li>
         </ul>
       </div>
