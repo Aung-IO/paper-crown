@@ -13,9 +13,9 @@ function Filter() {
       <p className="text-sm text-gray-400 font-mono border-b-2 p-1">FILTERS</p>
       {!!books && (
         <div>
-          {books.map((book) => (
-            <div className="mt-1" key={book.id}>
-              <input type="checkbox" /> {book.categories}
+          {[...new Set(books.map((book) => book.author))].map((a, index) => (
+            <div className="mt-1" key={index}>
+              <input type="checkbox" /> {a}
             </div>
           ))}
         </div>

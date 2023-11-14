@@ -8,22 +8,13 @@ export default function CreateBook() {
   let [dimension, setDimension] = useState("");
   let [pages, setPages] = useState("");
   let [description, setDescription] = useState("");
-  let [newCategory, setNewCategory] = useState("");
-  let [categories, setCategories] = useState([]);
+  let [author, setAuthor] = useState("");
 
   let { setPostData, data: book } = useFetch(
     "http://localhost:3000/books",
     "POST"
   );
   let navigate = useNavigate();
-  let addCategory = (e) => {
-    if (newCategory && categories.includes(newCategory)) {
-      setNewCategory("");
-      return;
-    }
-    setCategories((prev) => [newCategory, ...prev]);
-    setNewCategory("");
-  };
 
   let addBook = (e) => {
     e.preventDefault();
@@ -32,8 +23,8 @@ export default function CreateBook() {
       price,
       dimension,
       pages,
-      categories,
       description,
+      author,
     };
     setPostData(data);
   };
@@ -120,39 +111,13 @@ export default function CreateBook() {
           </label>
           <div className="flex space-x-2">
             <input
-              value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="author"
               type="text"
               placeholder="Author"
             />
-            <button onClick={addCategory} type="button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-7 h-7 "
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className="flex flex-wrap mt-2">
-            {categories.map((category) => (
-              <span
-                key={category}
-                className="mx-1 my-1 px-2 py-1 text-sm bg-white border border-gray-400 rounded-md shadow"
-              >
-                {category}
-              </span>
-            ))}
           </div>
         </div>
         <div className="mb-4">

@@ -7,9 +7,7 @@
       "price": "$30.00",
       "dimension": "9.25” x 12.2” (23.5 x 31 cm)",
       "pages": 39,
-      "categories": [
-        "Dong Ho Kim"
-      ]
+      "author": "Dong Ho Kim"
     },
     {
       "id": 2,
@@ -18,9 +16,7 @@
       "price": "$45.00",
       "dimension": "11” x 9.1” (28x 22.5 cm)",
       "pages": 240,
-      "categories": [
-        "Hans Olo"
-      ]
+      "author": "Hans Olo"
     },
     {
       "id": 3,
@@ -29,9 +25,7 @@
       "price": "$110.00",
       "dimension": "11H x 8.5",
       "pages": 336,
-      "categories": [
-        "Kim Jung Gi"
-      ]
+      "author": "Kim Jung Gi"
     },
     {
       "id": 4,
@@ -40,9 +34,7 @@
       "price": "$110.00",
       "dimension": "11H x 8.5",
       "pages": 336,
-      "categories": [
-        "Kim Jung Gi"
-      ]
+      "author": "Kim Jung Gi"
     },
     {
       "title": "Nova Comic",
@@ -50,9 +42,7 @@
       "dimension": "12*12",
       "pages": "12",
       "description": "This is Nova's Art",
-      "categories": [
-        "nova"
-      ],
+      "author": "Nova",
       "id": 5
     },
     {
@@ -61,9 +51,7 @@
       "dimension": "10 * 10",
       "pages": "4",
       "description": "This is Soka's Art",
-      "categories": [
-        "soka"
-      ],
+      "author": "Soka",
       "id": 6
     },
     {
@@ -71,11 +59,27 @@
       "price": "20",
       "dimension": "10 * 10",
       "pages": "12",
-      "categories": [
-        "WarPu"
-      ],
+      "author": "War Pu",
       "description": "This is WarPu's Art",
       "id": 7
+    },
+    {
+      "title": "test",
+      "price": "10",
+      "dimension": "10 * 10",
+      "pages": "10",
+      "description": "test",
+      "author": "test",
+      "id": 8
+    },
+    {
+      "title": "WarPu's art",
+      "price": "20",
+      "dimension": "10 * 10",
+      "pages": "12",
+      "author": "War Pu",
+      "description": "This is WarPu's Art",
+      "id": 9
     }
   ]
 }
