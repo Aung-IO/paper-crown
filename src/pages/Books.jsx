@@ -19,11 +19,10 @@ export default function Books() {
   }, [filtered]);
 
   let handleFilter = () => {
-    if (filtered === "all") {
-      navigate("");
-    } else {
-      navigate("/books/?author=" + filtered);
-    }
+    const url = `/books${
+      filtered ? (filtered === "all" ? "" : `?author=${filtered}`) : ""
+    }`;
+    navigate(url);
   };
 
   let {
@@ -56,7 +55,7 @@ export default function Books() {
               </p>
 
               <ul>
-              <li>
+                <li>
                   <button onClick={() => handleClick("all")}>All</button>
                 </li>
                 <li>
