@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import cover from "../assets/book_cover.png";
 import useFetch from "../hooks/useFetch";
@@ -8,13 +8,22 @@ export default function Books() {
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
   let filter = param.get("author");
-  let [filtered, setFiltered] = useState("");
   let navigate = useNavigate();
-  let handleFilter = (e) => {
-     navigate("/books/?author=" + filtered);
-     setFiltered('')
-     console.log(filtered);
-   
+  let [filtered, setFiltered] = useState("");
+
+  let handleClick = (value) => {
+    setFiltered(value);
+  };
+  useEffect(() => {
+    handleFilter();
+  }, [filtered]);
+
+  let handleFilter = () => {
+    if (filtered === "all") {
+      navigate("");
+    } else {
+      navigate("/books/?author=" + filtered);
+    }
   };
 
   let {
@@ -45,23 +54,34 @@ export default function Books() {
               <p className="text-sm text-gray-400 font-mono border-b-2 p-1">
                 FILTERS
               </p>
-              {!!books && (
+
+              <ul>
+              <li>
+                  <button onClick={() => handleClick("all")}>All</button>
+                </li>
+                <li>
+                  <button onClick={() => handleClick("nova")}>Nova</button>
+                </li>
+                <li>
+                  <button onClick={() => handleClick("soka")}>Soka</button>
+                </li>
+                <li>
+                  <button onClick={() => handleClick("warpu")}>WarPu</button>
+                </li>
+              </ul>
+
+              {/* {!!books && (
                 <div>
                   {[...new Set(books.map((book) => book.author))].map(
                     (a, index) => (
                       <div className="mt-1 flex" key={index}>
-                        <input
-                          type="checkbox"
-                          value={filtered}
-                          onClick={(e) => setFiltered(a)}
-                          
-                        />
-                        <button onClick={handleFilter}>{a}</button>
+                       
+                        <button onClick={handleFilter}>Nova</button>
                       </div>
                     )
                   )}
                 </div>
-              )}
+              )} */}
             </div>
           </li>
           {/* Book List */}
