@@ -28,9 +28,10 @@ export default function BookDetail() {
           <div className="space-y-2">
             <h1 className="font-semibold text-3xl">{book.title}</h1>
             <h3>{book.price}</h3>
-            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
               Add to Cart
             </button>
+            <p className="font-bold text-2xl">{book.author}</p>
             <p>{book.description}</p>
             <p><b>Dimension: </b>{book.dimension}</p>
             <p><b>Pages: </b>{book.pages}</p>

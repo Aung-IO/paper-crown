@@ -83,7 +83,7 @@ export default function Footer() {
         <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* <!-- TW elements section --> */}
           <div>
-            <h6 className="mb-4 flex items-center justify-center font-semibold  md:justify-start -mt-5">
+            <h6 className="mb-4 flex items-center justify-center font-semibold  md:justify-start -mt-1 -ml-3">
               <img src="../src/assets/icon.svg" className="w-14" />
               PAPER CROWN DROP HERE !
             </h6>

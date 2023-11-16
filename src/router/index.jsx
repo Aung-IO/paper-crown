@@ -1,10 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Contact from "../components/Contact";
+import Contact from "../pages/Contact";
+import CreateBook from "../components/CreateBook";
+import BookDetail from "../pages/BookDetail";
 import Books from "../pages/Books";
 import Commission from "../pages/Commission";
 import Error from "../pages/Error";
+import FAQs from "../pages/FAQs";
 import Home from "../pages/Home";
-import BookDetail from "../pages/BookDetail";
+import OriginalArts from "../pages/OriginalArts";
 import Layout from "../pages/layouts/Layout";
 const router = createBrowserRouter([
   {
@@ -29,8 +32,20 @@ const router = createBrowserRouter([
         element: <Commission />,
       },
       {
+        path: "/origianl_arts",
+        element: <OriginalArts />,
+      },
+      {
+        path: "/faqs",
+        element: <FAQs />,
+      },
+      {
         path: "/contact",
         element: <Contact/>,
+      },
+      {
+        path: "/create",
+        element: <CreateBook/>,
       },
       
     ],
