@@ -7,15 +7,22 @@ function BookList() {
   let location = useLocation();
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
+  let filter = param.get("author");
+
   let {
     data: books,
     loading,
     error,
-  } = useFetch(`http://localhost:3000/books${search ? `?q=${search}` : ""}`);
+  } = useFetch(
+    `http://localhost:3000/books${search ? `?q=${search}` : ""}${
+      filter ? `?q=${filter}` : ""
+    }`
+  );
 
   if (error) {
     return <p>{error}</p>;
   }
+
   return (
     <div>
       {loading && <p>loading ... </p>}
@@ -38,7 +45,7 @@ function BookList() {
       )}
 
       {books && !books.length && (
-          <p className="text-center text-xl font-bold">
+        <p className="text-center text-xl font-bold">
           Hmmm, we didn't find anything for "{search}"
         </p>
       )}

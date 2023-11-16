@@ -12,8 +12,8 @@ export default function Navbar() {
 
   let handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/books${search ? `?search=${search}` : ''}`);
-    setSearch('');
+    navigate(`/books${search ? `?search=${search}` : ""}`);
+    setSearch("");
   };
 
   return (
