@@ -5,6 +5,7 @@ import useFetch from "../hooks/useFetch";
 
 function BookList(props) {
   let { baseRoute } = props;
+  
   let location = useLocation();
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
@@ -15,7 +16,7 @@ function BookList(props) {
     loading,
     error,
   } = useFetch(
-    `http://localhost:3000/${baseRoute}${search ? `?q=${search}` : ""}${
+    `http://localhost:3000/books${search ? `?q=${search}` : ""}${
       filter ? `?q=${filter}` : ""
     }`
   );

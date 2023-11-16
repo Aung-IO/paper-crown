@@ -14,7 +14,7 @@ export default function Books() {
         <ul className="flex m-8">
           {/* Filter */}
           <li className="w-1/5 p-5">
-            <Filter  />
+            <Filter baseRoute={baseRoute}  />
           </li>
           {/* Book List */}
           <li className="w-4/5">
