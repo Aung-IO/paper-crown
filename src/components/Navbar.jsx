@@ -10,8 +10,9 @@ export default function Navbar() {
 
   let [search, setSearch] = useState("");
 
-  let handleSearch = () => {
-    navigate("/books/?search=" + search);
+  let handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/books${search ? `?search=${search}` : ''}`);
     setSearch('');
   };
 

@@ -11,19 +11,12 @@ export default function Books() {
   let navigate = useNavigate();
   let [filtered, setFiltered] = useState("");
 
-  let handleClick = (value) => {
-    setFiltered(value);
+  const handleFilter = () => {
+    navigate(`/books${filtered ? (filtered === 'all' ? '' : `?author=${filtered}`) : ''}`);
   };
   useEffect(() => {
     handleFilter();
   }, [filtered]);
-
-  let handleFilter = () => {
-    const url = `/books${
-      filtered ? (filtered === "all" ? "" : `?author=${filtered}`) : ""
-    }`;
-    navigate(url);
-  };
 
   let {
     data: books,
@@ -56,16 +49,16 @@ export default function Books() {
 
               <ul>
                 <li>
-                  <button onClick={() => handleClick("all")}>All</button>
+                  <button onClick={() => setFiltered("all")}>All</button>
                 </li>
                 <li>
-                  <button onClick={() => handleClick("nova")}>Nova</button>
+                  <button onClick={() => setFiltered("nova")}>Nova</button>
                 </li>
                 <li>
-                  <button onClick={() => handleClick("soka")}>Soka</button>
+                  <button onClick={() => setFiltered("soka")}>Soka</button>
                 </li>
                 <li>
-                  <button onClick={() => handleClick("warpu")}>WarPu</button>
+                  <button onClick={() => setFiltered("warpu")}>WarPu</button>
                 </li>
               </ul>
 
