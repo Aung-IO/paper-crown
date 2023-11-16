@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import cover from "../assets/book_cover.png";
 import useFetch from "../hooks/useFetch";
+import Loading from "./Loading";
 
 function BookList(props) {
   let { baseRoute } = props;
@@ -27,7 +28,7 @@ function BookList(props) {
 
   return (
     <div>
-      {loading && <p>loading ... </p>}
+      {loading && <Loading/>}
 
       {/* book list */}
       {!!books && (

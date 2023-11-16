@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import Contact from "../pages/Contact";
 import CreateBook from "../components/CreateBook";
 import BookDetail from "../pages/BookDetail";
 import Books from "../pages/Books";
 import Commission from "../pages/Commission";
+import Contact from "../pages/Contact";
 import Error from "../pages/Error";
 import FAQs from "../pages/FAQs";
 import Home from "../pages/Home";

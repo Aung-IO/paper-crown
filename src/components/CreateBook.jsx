@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import TextAreaInput from "./TextAreaInput";
 
 export default function CreateBook() {
   let [title, setTitle] = useState("");
@@ -38,104 +39,42 @@ export default function CreateBook() {
   return (
     <form className="w-full max-w-lg mx-auto mt-4" onSubmit={addBook}>
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="book title"
-          >
-            Book Title
-          </label>
-          <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="book_title"
-            type="text"
-            placeholder="Book Title"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="price"
-          >
-            Price
-          </label>
-          <input
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="price"
-            type="text"
-            placeholder="Sale Price"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="dimension"
-          >
-            Dimension
-          </label>
-          <input
-            value={dimension}
-            onChange={(e) => setDimension(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="dimension"
-            type="text"
-            placeholder="Book Dimension"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="pages"
-          >
-            Pages
-          </label>
-          <input
-            value={pages}
-            onChange={(e) => setPages(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="pages"
-            type="text"
-            placeholder="Total Pages"
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="author"
-          >
-            Author
-          </label>
-          <div className="flex space-x-2">
-            <input
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="author"
-              type="text"
-              placeholder="Author"
-            />
-          </div>
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="dimension"
-          >
-            Book Description
-          </label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            type="text"
-            placeholder="Description"
-          />
-        </div>
+        <TextAreaInput
+          label="Book Title"
+          value="title"
+          func={(e) => setTitle(e.target.value)}
+          id="title"
+          placeholder="Book Title"
+        ></TextAreaInput>
+        <TextAreaInput
+          label="Book Price"
+          value="price"
+          func={(e) => setPrice(e.target.value)}
+          id="price"
+          placeholder="Sale Price"
+        ></TextAreaInput>
+        <TextAreaInput
+          label="Book Dimension"
+          value="dimension"
+          func={(e) => setDimension(e.target.value)}
+          id="dimension"
+          placeholder="Book Dimension"
+        ></TextAreaInput>
+        <TextAreaInput
+          label="Book Author"
+          value="author"
+          func={(e) => setAuthor(e.target.value)}
+          id="author"
+          placeholder="Book Author"
+        ></TextAreaInput>
+        <TextAreaInput
+          tag="textarea"
+          label="Book Description"
+          value="description"
+          func={(e) => setDescription(e.target.value)}
+          id="description"
+          placeholder="Description"
+        ></TextAreaInput>
         <div className="md:flex md:items-center">
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">
