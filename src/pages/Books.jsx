@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import cover from "../assets/book_cover.png";
-import useFetch from "../hooks/useFetch";
-import Filter from "../components/Filter";
+import React from "react";
 import BookList from "../components/BookList";
+import Filter from "../components/Filter";
 
 export default function Books() {
-  
+  const baseRoute = 'books';
   return (
     <>
       <div className="text-5xl text-center items-center p-14 font-mono bg-zinc-50">
@@ -17,11 +14,11 @@ export default function Books() {
         <ul className="flex m-8">
           {/* Filter */}
           <li className="w-1/5 p-5">
-            <Filter/>
+            <Filter  />
           </li>
           {/* Book List */}
           <li className="w-4/5">
-            <BookList/>
+            <BookList baseRoute={baseRoute} />
           </li>
         </ul>
       </div>

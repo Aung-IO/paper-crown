@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import cover from "../assets/book_cover.png";
 import useFetch from "../hooks/useFetch";
 
-function BookList() {
+function BookList(props) {
+  let { baseRoute } = props;
   let location = useLocation();
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
@@ -14,7 +15,7 @@ function BookList() {
     loading,
     error,
   } = useFetch(
-    `http://localhost:3000/books${search ? `?q=${search}` : ""}${
+    `http://localhost:3000/${baseRoute}${search ? `?q=${search}` : ""}${
       filter ? `?q=${filter}` : ""
     }`
   );
