@@ -15,7 +15,7 @@ export default function Layout() {
       {/* dynamic route changes */}
        <SwitchTransition>
         <CSSTransition timeout={200} classNames="fade" key={location.pathname}>
-          <div className="mt-2 m-12">
+          <div className="mt-2 m-10">
          <Outlet />
           </div>
         </CSSTransition>

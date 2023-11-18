@@ -7,10 +7,10 @@ export default function Navbar() {
     let path = "/create";
     navigate(path);
   };
-  // const loginForm = () => {
-  //   let path = "/login";
-  //   navigate(path);
-  // };
+  const loginForm = () => {
+    let path = "/login";
+    navigate(path);
+  };
   
 
   let [search, setSearch] = useState("");
@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav>
-      <ul className="flex justify-around mt-4 ">
+      <ul className="container mx-auto flex flex-wrap items-center justify-between mt-4">
         {/* logo */}
         <li className="flex">
           <p className="text-lg">Paper Crown</p>
@@ -55,7 +55,7 @@ export default function Navbar() {
         {/* icons */}
         <li>
           <ul className="flex gap-6">
-            {/* <li>
+            <li>
               <button onClick={loginForm}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ export default function Navbar() {
                 />
               </svg>
               </button>
-            </li> */}
+            </li>
             <li>
               <button onClick={createBook}>
                 <svg
