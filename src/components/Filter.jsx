@@ -33,7 +33,7 @@ function Filter(props) {
   }
   return (
     <div>
-      {loading && <p>Loading...</p>}
+      
       <p className="text-sm text-gray-400 font-mono border-b-2 p-1">FILTERS</p>
 
       <ul>

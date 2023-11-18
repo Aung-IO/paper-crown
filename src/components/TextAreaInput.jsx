@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextAreaInput = ({ label, value, func, id, placeholder, tag }) => {
+const TextAreaInput = ({ label, value, func, id, placeholder, tag}) => {
   return (
     <div className="mb-4">
       <label

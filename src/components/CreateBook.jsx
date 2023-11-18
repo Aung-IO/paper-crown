@@ -10,6 +10,8 @@ export default function CreateBook() {
   let [pages, setPages] = useState("");
   let [description, setDescription] = useState("");
   let [author, setAuthor] = useState("");
+  let [preview, setPreview] = useState("");
+  let [file, setFile] = useState(null);
 
   let { setPostData, data: book } = useFetch(
     "http://localhost:3000/books",
@@ -35,6 +37,24 @@ export default function CreateBook() {
       navigate("/books");
     }
   }, [book]);
+
+  let handleCoverImage = (e) => {
+    setFile(e.target.files[0]);
+  }
+  let handlePreivewImage = (file) => {
+    let reader = new FileReader;
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      setPreview(reader.result);
+    }
+  }
+  useEffect(() => {
+    if (file) {
+     handlePreivewImage(file);
+    }
+  }, [file]);
+  
 
   return (
     <form className="w-full max-w-lg mx-auto mt-4" onSubmit={addBook}>
@@ -75,6 +95,17 @@ export default function CreateBook() {
           id="description"
           placeholder="Description"
         ></TextAreaInput>
+        {/* image upload */}
+        <div className="mb-4">
+        <label
+        className="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor="cover"
+      >
+        Choose Cover Image
+      </label>
+      <input type="file" name="" id="" onChange={handleCoverImage} />
+      {!!preview && <img src={preview} className="mt-3"></img>}
+        </div>
         <div className="md:flex md:items-center">
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">

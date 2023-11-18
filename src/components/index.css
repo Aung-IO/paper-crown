@@ -1,0 +1,10 @@
+.page-container {
+    position: relative;
+  }
+  
+  .centered-container {
+    position: absolute;
+    
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

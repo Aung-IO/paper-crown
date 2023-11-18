@@ -13,13 +13,14 @@ export default function Layout() {
       <Navbar />
 
       {/* dynamic route changes */}
-      <SwitchTransition>
+       <SwitchTransition>
         <CSSTransition timeout={200} classNames="fade" key={location.pathname}>
           <div className="mt-2 m-12">
-            <Outlet />
+         <Outlet />
           </div>
         </CSSTransition>
-      </SwitchTransition>
+      </SwitchTransition> 
+      
       <div className="m-14 -mb-20">
         <Footer />
       </div>
