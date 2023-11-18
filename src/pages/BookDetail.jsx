@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import cover from "../assets/book_cover.png";
+import Loading from "../components/Loading";
 import useFetch from "../hooks/useFetch";
-
 export default function BookDetail() {
   // dynamic id
   let { id } = useParams();
@@ -17,7 +17,7 @@ export default function BookDetail() {
   return (
     <>
       {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
 
       {book && (
         <div className="grid grid-cols-2 mt-20">
