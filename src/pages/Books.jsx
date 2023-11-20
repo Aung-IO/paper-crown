@@ -18,7 +18,7 @@ export default function Books() {
           </li>
           {/* Book List */}
           <li className="w-4/5">
-            <BookList baseRoute={baseRoute} />
+            <BookList/>
           </li>
         </ul>
       </div>

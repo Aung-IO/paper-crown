@@ -1,26 +1,32 @@
-import React from "react";
+import { collection, getDocs } from "@firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import cover from "../assets/book_cover.png";
 import LoadingSpinner from "../components/LoadingSpinner";
-import useFetch from "../hooks/useFetch";
+import { db } from "../firebase";
 
-function BookList(props) {
-  let { baseRoute } = props;
+function BookList() {
   
+
   let location = useLocation();
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
-  let filter = param.get("author");
+  
 
-  let {
-    data: books,
-    loading,
-    error,
-  } = useFetch(
-    `http://localhost:3000/books${search ? `?q=${search}` : ""}${
-      filter ? `?q=${filter}` : ""
-    }`
-  );
+  let [error, setError] = useState("");
+  let [loading, setLoading] = useState(false);
+  let [books, setBooks] = useState([]);
+  useEffect(function () {
+    let ref = collection(db, "books");
+    getDocs(ref).then((docs) => {
+      let books = [];
+      docs.forEach((doc) => {
+        let book = { id: doc.id, ...doc.data() };
+        books.push(book);
+      });
+      setBooks(books);
+    });
+  }, []);
 
   if (error) {
     return <p>{error}</p>;
@@ -28,7 +34,7 @@ function BookList(props) {
 
   return (
     <div>
-      {loading && <LoadingSpinner/>}
+      {loading && <LoadingSpinner />}
 
       {/* book list */}
       {!!books && (
