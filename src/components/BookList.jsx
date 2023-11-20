@@ -6,25 +6,30 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { db } from "../firebase";
 
 function BookList() {
-  
-
   let location = useLocation();
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
-  
 
   let [error, setError] = useState("");
   let [loading, setLoading] = useState(false);
   let [books, setBooks] = useState([]);
   useEffect(function () {
+    setLoading(true);
     let ref = collection(db, "books");
     getDocs(ref).then((docs) => {
-      let books = [];
-      docs.forEach((doc) => {
-        let book = { id: doc.id, ...doc.data() };
-        books.push(book);
-      });
-      setBooks(books);
+      if (docs.empty) {
+        setError("No Docs Found");
+        setLoading(false);
+      } else {
+        let books = [];
+        docs.forEach((doc) => {
+          let book = { id: doc.id, ...doc.data() };
+          books.push(book);
+        });
+        setBooks(books);
+        setLoading(false);
+        setError("");
+      }
     });
   }, []);
 

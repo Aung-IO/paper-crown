@@ -1,19 +1,32 @@
-import React from "react";
+import { doc, getDoc } from "@firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import cover from "../assets/book_cover.png";
 import LoadingSpinner from "../components/LoadingSpinner";
-import useFetch from "../hooks/useFetch";
+import { db } from "../firebase";
 export default function BookDetail() {
   // dynamic id
   let { id } = useParams();
   // fetch book
+  let [error, setError] = useState("");
+  let [loading, setLoading] = useState(false);
+  let [book, setBook] = useState(null);
 
-  let {
-    data: book,
-    loading,
-    error,
-  } = useFetch(`http://localhost:3000/books/${id}`);
-
+  useEffect(() => {
+    setLoading(true);
+    let ref = doc(db, "books", id);
+    getDoc(ref).then((doc) => {
+      if (!doc.exists()) {
+        setError("Document not found");
+        setLoading(false);
+      } else {
+        let book = { id: doc.id, ...doc.data() };
+        setBook(book);
+        setLoading(false);
+        setError("");
+      }
+    });
+  }, [id]);
   return (
     <>
       {error && <p>{error}</p>}
@@ -40,13 +53,11 @@ export default function BookDetail() {
               {book.pages}
             </p>
             <Link to="/books">
-            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white mt-3 py-1 px-2 border border-blue-500 hover:border-transparent rounded">
-              Back
-            </button>
-          </Link>
+              <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white mt-3 py-1 px-2 border border-blue-500 hover:border-transparent rounded">
+                Back
+              </button>
+            </Link>
           </div>
-
-          
         </div>
       )}
     </>
