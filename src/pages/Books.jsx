@@ -2,7 +2,7 @@ import React from "react";
 import BookList from "../components/BookList";
 
 export default function Books() {
-  
+  let path = "books"
   return (
     <>
       <div className="text-5xl text-center items-center p-14 font-mono bg-zinc-50">
@@ -17,7 +17,7 @@ export default function Books() {
           </li> */}
           {/* Book List */}
           <li className="w-4/5">
-            <BookList/>
+            <BookList path={path}/>
           </li>
         </ul>
       </div>

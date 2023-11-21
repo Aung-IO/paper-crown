@@ -40,7 +40,7 @@ export default function BookDetail() {
 
           <div className="space-y-2">
             <h1 className="font-semibold text-3xl">{book.title}</h1>
-            <h3>{book.price}</h3>
+            <h3>Price : ${book.price}</h3>
 
             <p className="font-bold text-2xl">{book.author}</p>
             <p>{book.description}</p>
