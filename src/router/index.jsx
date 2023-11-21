@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import CreateBook from "../components/CreateBook";
+import BookForm from "../components/BookForm";
 import BookDetail from "../pages/BookDetail";
 import Books from "../pages/Books";
 import Commission from "../pages/Commission";
@@ -46,7 +46,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/create",
-        element: <CreateBook/>,
+        element: <BookForm/>,
+      },
+      {
+        path: "/edit/:id",
+        element: <BookForm/>,
       },
       {
         path: "/login",

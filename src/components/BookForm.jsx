@@ -1,10 +1,18 @@
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
 import TextAreaInput from "./TextAreaInput";
 
 export default function CreateBook() {
+  let { id } = useParams();
   let [title, setTitle] = useState("");
   let [price, setPrice] = useState("");
   let [dimension, setDimension] = useState("");
@@ -13,9 +21,40 @@ export default function CreateBook() {
   let [author, setAuthor] = useState("");
   let [preview, setPreview] = useState("");
   let [file, setFile] = useState(null);
+  let [isEdit, setIsEdit] = useState(false);
   let navigate = useNavigate("");
 
-  let addBook = (e) => {
+  useEffect(() => {
+    // edit form
+    if (id) {
+      setIsEdit(true);
+      let ref = doc(db, "books", id);
+      getDoc(ref).then((doc) => {
+        if (doc.exists()) {
+          let { title, price, dimension, pages, description, author } =
+            doc.data();
+          setTitle(title);
+          setPrice(price);
+          setDimension(dimension);
+          setPages(pages);
+          setDescription(description);
+          setAuthor(author);
+        }
+      });
+    }
+    // create form
+    else {
+      setIsEdit(false);
+      setTitle("");
+      setPrice("");
+      setDimension("");
+      setPages("");
+      setDescription("");
+      setAuthor("");
+    }
+  }, []);
+
+  let submitForm = async (e) => {
     e.preventDefault();
     let data = {
       title,
@@ -27,8 +66,13 @@ export default function CreateBook() {
       date: serverTimestamp(),
     };
 
-    let ref = collection(db, "books");
-    addDoc(ref, data);
+    if (isEdit) {
+      let ref = doc(db, "books", id);
+      await updateDoc(ref, data);
+    } else {
+      let ref = collection(db, "books");
+      await addDoc(ref, data);
+    }
     navigate("/books");
   };
 
@@ -50,7 +94,7 @@ export default function CreateBook() {
   }, [file]);
 
   return (
-    <form className="w-full max-w-lg mx-auto mt-4" onSubmit={addBook}>
+    <form className="w-full max-w-lg mx-auto mt-4" onSubmit={submitForm}>
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <TextAreaInput
           label="Book Title"
@@ -113,7 +157,7 @@ export default function CreateBook() {
               className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
             >
-              Create
+              {isEdit ? "Edit" : "Create"} Book
             </button>
           </div>
         </div>

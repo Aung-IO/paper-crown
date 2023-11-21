@@ -1,9 +1,8 @@
 import React from "react";
 import BookList from "../components/BookList";
-import Filter from "../components/Filter";
 
 export default function Commission() {
-  const baseRoute = "commission";
+  const path = "commission";
   //need to create route for commission
   return (
     <>
@@ -14,13 +13,13 @@ export default function Commission() {
       <div>
         <ul className="flex m-8">
           {/* Filter */}
-          <li className="w-1/5 p-5">
+          {/* <li className="w-1/5 p-5">
             
             <Filter baseRoute={baseRoute} />
-          </li>
+          </li> */}
           {/* Book List */}
           <li className="w-4/5">
-            <BookList baseRoute={baseRoute} />
+            <BookList path={path} />
           </li>
         </ul>
       </div>
