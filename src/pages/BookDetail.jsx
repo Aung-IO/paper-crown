@@ -1,4 +1,4 @@
-import { doc, getDoc } from "@firebase/firestore";
+import { doc, onSnapshot } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import cover from "../assets/book_cover.png";
@@ -15,7 +15,7 @@ export default function BookDetail() {
   useEffect(() => {
     setLoading(true);
     let ref = doc(db, "books", id);
-    getDoc(ref).then((doc) => {
+    onSnapshot(ref, (doc) => {
       if (!doc.exists()) {
         setError("Document not found");
         setLoading(false);
@@ -25,7 +25,7 @@ export default function BookDetail() {
         setLoading(false);
         setError("");
       }
-    });
+    })
   }, [id]);
   return (
     <>

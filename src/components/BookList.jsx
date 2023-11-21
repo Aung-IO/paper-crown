@@ -2,9 +2,9 @@ import {
   collection,
   deleteDoc,
   doc,
-  getDocs,
+  onSnapshot,
   orderBy,
-  query,
+  query
 } from "@firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -28,7 +28,7 @@ function BookList() {
     e.preventDefault();
     let ref = doc(db, "books", id);
     await deleteDoc(ref);
-    setBooks((prev) => prev.filter((b) => b.id !== id));
+    
   };
 
   useEffect(function () {
@@ -36,21 +36,21 @@ function BookList() {
     let ref = collection(db, "books");
     let q = query(ref, orderBy("date", "desc"));
 
-    getDocs(q).then((docs) => {
-      if (docs.empty) {
-        setError("No Documents Found");
-        setLoading(false);
-      } else {
-        let books = [];
-        docs.forEach((doc) => {
-          let book = { id: doc.id, ...doc.data() };
-          books.push(book);
-        });
-        setBooks(books);
-        setLoading(false);
-        setError("");
-      }
-    });
+   onSnapshot(q, (docs) => {
+    if (docs.empty) {
+      setError("No Documents Found");
+      setLoading(false);
+    } else {
+      let books = [];
+      docs.forEach((doc) => {
+        let book = { id: doc.id, ...doc.data() };
+        books.push(book);
+      });
+      setBooks(books);
+      setLoading(false);
+      setError("");
+    }
+  })
   }, []);
 
   if (error) {
