@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-import useSignup from "../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
+import useSignin from "../hooks/useSignin";
 
-export default function Register() {
+export default function Login() {
   let navigate = useNavigate();
-  let { error, loading, signUp } = useSignin();
+  let { error, loading, signIn } = useSignin();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
-  let registerUser = async (e) => {
+  let login = async (e) => {
     e.preventDefault();
-    await signUp(email, password);
+    await signIn(email, password);
     navigate("/");
   };
-
   return (
     <div className="w-full max-w-xs mx-auto mt-4">
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={registerUser}
+        onSubmit={login}
       >
         <div className="mb-4">
           <label
@@ -80,7 +79,7 @@ export default function Register() {
               ></path>
             </svg>
           )}
-          Register
+          Login
         </button>
       </form>
     </div>

@@ -9,6 +9,7 @@ import FAQs from "../pages/FAQs";
 import Home from "../pages/Home";
 import OriginalArts from "../pages/OriginalArts";
 import Register from "../pages/Register";
+import Login from "../pages/Login";
 import Layout from "../pages/layouts/Layout";
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register/>,
+      },
+      {
+        path: "/login",
+        element: <Login/>,
       },
      
      
