@@ -7,8 +7,8 @@ export default function Navbar() {
     let path = "/create";
     navigate(path);
   };
-  const loginForm = () => {
-    let path = "/login";
+  const register = () => {
+    let path = "/register";
     navigate(path);
   };
 
@@ -102,7 +102,7 @@ export default function Navbar() {
             />
           </svg>
         </div>
-        <div onClick={loginForm}>
+        <div onClick={register}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -7,8 +7,8 @@ import Contact from "../pages/Contact";
 import Error from "../pages/Error";
 import FAQs from "../pages/FAQs";
 import Home from "../pages/Home";
-import LoginForm from "../pages/LoginForm";
 import OriginalArts from "../pages/OriginalArts";
+import Register from "../pages/Register";
 import Layout from "../pages/layouts/Layout";
 const router = createBrowserRouter([
   {
@@ -53,8 +53,8 @@ const router = createBrowserRouter([
         element: <BookForm/>,
       },
       {
-        path: "/login",
-        element: <LoginForm/>,
+        path: "/register",
+        element: <Register/>,
       },
      
      
