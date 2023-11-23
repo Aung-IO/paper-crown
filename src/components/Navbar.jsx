@@ -6,7 +6,6 @@ import useSignOut from "../hooks/useSignOut";
 export default function Navbar() {
   let navigate = useNavigate();
   let { user } = useContext(AuthContext);
-  console.log(user);
   let [search, setSearch] = useState("");
   let [open, setOpen] = useState(false);
 
