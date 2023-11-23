@@ -10,8 +10,10 @@ export default function Login() {
 
   let login = async (e) => {
     e.preventDefault();
-    await signIn(email, password);
-    navigate("/");
+    let user = await signIn(email, password);
+    if (user) {
+      navigate("/");
+    }
   };
   return (
     <div className="w-full max-w-xs mx-auto mt-4">

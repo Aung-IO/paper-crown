@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useSignOut from "../hooks/useSignOut";
 import { AuthContext } from "../context/AuthContext";
+import useSignOut from "../hooks/useSignOut";
 
 export default function Navbar() {
   let navigate = useNavigate();
@@ -87,14 +87,14 @@ export default function Navbar() {
           </li>
         </ul>
         <div className="flex gap-2 mt-2 md:mt-0">
-          <Link to="/create">
+        { !!user && <Link to="/create">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="md:w-8 w-6 md:h-6 h-5 cursor-pointer"
+              className="md:w-8 w-6 md:h-6 h-5 cursor-pointer mt-1 "
             >
               <path
                 strokeLinecap="round"
@@ -102,38 +102,16 @@ export default function Navbar() {
                 d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-          </Link>
-        { !user &&   <Link to="/login">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 cursor-pointer"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-              />
-            </svg>
           </Link>}
-          {!!user && <button onClick={singOutUser}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 cursor-pointer"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-              />
-            </svg>
+        { !user &&   <Link to="/login" >
+        <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
+       Login
+</button>
+          
+          </Link>}
+          {!!user && <button onClick={singOutUser} className=" bg-white  hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow" >
+            Logout
+            
           </button>}
         </div>
       </div>

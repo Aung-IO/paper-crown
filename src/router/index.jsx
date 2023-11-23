@@ -11,62 +11,65 @@ import OriginalArts from "../pages/OriginalArts";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Layout from "../pages/layouts/Layout";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    errorElement: <Error/>,
-    children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "/books",
-        element: <Books />,
-      },
-      {
-        path: "/books/:id",
-        element: <BookDetail/>,
-      },
-      {
-        path: "/commission",
-        element: <Commission />,
-      },
-      {
-        path: "/origianl_arts",
-        element: <OriginalArts />,
-      },
-      {
-        path: "/faqs",
-        element: <FAQs />,
-      },
-      {
-        path: "/contact",
-        element: <Contact/>,
-      },
-      {
-        path: "/create",
-        element: <BookForm/>,
-      },
-      {
-        path: "/edit/:id",
-        element: <BookForm/>,
-      },
-      {
-        path: "/register",
-        element: <Register/>,
-      },
-      {
-        path: "/login",
-        element: <Login/>,
-      },
-     
-     
-     
-      
-    ],
-  },
-]);
+import React, { useContext } from "react";
+import { RouterProvider } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
-export default router;
+export default function index() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <Error />,
+      children: [
+        {
+          path: "",
+          element: <Home />,
+        },
+        {
+          path: "/books",
+          element: <Books />,
+        },
+        {
+          path: "/books/:id",
+          element: <BookDetail />,
+        },
+        {
+          path: "/commission",
+          element: <Commission />,
+        },
+        {
+          path: "/origianl_arts",
+          element: <OriginalArts />,
+        },
+        {
+          path: "/faqs",
+          element: <FAQs />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
+        },
+        {
+          path: "/create",
+          element: <BookForm />,
+        },
+        {
+          path: "/edit/:id",
+          element: <BookForm />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+      ],
+    },
+  ]);
+
+  let { authReady } = useContext(AuthContext);
+  return authReady && <RouterProvider router={router} />;
+}
