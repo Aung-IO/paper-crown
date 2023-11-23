@@ -4,7 +4,7 @@ import {
   doc,
   onSnapshot,
   orderBy,
-  query
+  query,
 } from "@firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -12,48 +12,22 @@ import cover from "../assets/book_cover.png";
 import DeleteIcon from "../assets/icons/deleteIcon.svg";
 import EditIcon from "../assets/icons/editIcon.svg";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import useFirestore from "../hooks/useFirestore";
 
 function BookList() {
   let { user } = useContext(AuthContext);
   let location = useLocation();
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
-  
 
-  let [error, setError] = useState("");
-  let [loading, setLoading] = useState(false);
-  let [books, setBooks] = useState([]);
+  let { getCollection, deleteDocument } = useFirestore();
+  let { error, loading, data: books } = getCollection("books");
 
   let deleteBook = async (e, id) => {
     e.preventDefault();
-    let ref = doc(db, "books", id);
-    await deleteDoc(ref);
-    
+    await deleteDocument("books", id);
   };
-
-  useEffect(function () {
-    setLoading(true);
-    let ref = collection(db, "books");
-    let q = query(ref, orderBy("date", "desc"));
-
-   onSnapshot(q, (docs) => {
-    if (docs.empty) {
-      setError("No Documents Found");
-      setLoading(false);
-    } else {
-      let books = [];
-      docs.forEach((doc) => {
-        let book = { id: doc.id, ...doc.data() };
-        books.push(book);
-      });
-      setBooks(books);
-      setLoading(false);
-      setError("");
-    }
-  })
-  }, []);
 
   if (error) {
     return <p>{error}</p>;
@@ -74,14 +48,18 @@ function BookList() {
                   <h1>{book.title}</h1>
                   <p>${book.price}</p>
                 </div>
-                {!!user && <div className="flex justify-end space-x-2">
-                 <Link to={`/edit/${book.id}`}> <img src={EditIcon} /></Link>
-                  <img
-                    src={DeleteIcon}
-                    onClick={(e) => deleteBook(e, book.id)}
-                  />
-
-                </div>}
+                {!!user && (
+                  <div className="flex justify-end space-x-2">
+                    <Link to={`/edit/${book.id}`}>
+                      {" "}
+                      <img src={EditIcon} />
+                    </Link>
+                    <img
+                      src={DeleteIcon}
+                      onClick={(e) => deleteBook(e, book.id)}
+                    />
+                  </div>
+                )}
               </div>
             </Link>
           ))}

@@ -1,14 +1,8 @@
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  serverTimestamp,
-  updateDoc,
-} from "firebase/firestore";
+import { doc, getDoc, serverTimestamp } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
+import useFirestore from "../hooks/useFirestore";
 import TextAreaInput from "./TextAreaInput";
 
 export default function CreateBook() {
@@ -23,6 +17,8 @@ export default function CreateBook() {
   let [file, setFile] = useState(null);
   let [isEdit, setIsEdit] = useState(false);
   let navigate = useNavigate("");
+
+  let { addCollection, updateDocument } = useFirestore();
 
   useEffect(() => {
     // edit form
@@ -63,15 +59,12 @@ export default function CreateBook() {
       pages,
       description,
       author,
-      date: serverTimestamp(),
     };
 
     if (isEdit) {
-      let ref = doc(db, "books", id);
-      await updateDoc(ref, data);
+      await updateDocument("books", id, data);
     } else {
-      let ref = collection(db, "books");
-      await addDoc(ref, data);
+      await addCollection("books", data);
     }
     navigate("/books");
   };

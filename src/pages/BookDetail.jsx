@@ -1,32 +1,13 @@
-import { doc, onSnapshot } from "@firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import cover from "../assets/book_cover.png";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { db } from "../firebase";
+import useFirestore from "../hooks/useFirestore";
 export default function BookDetail() {
-  // dynamic id
   let { id } = useParams();
-  // fetch book
-  let [error, setError] = useState("");
-  let [loading, setLoading] = useState(false);
-  let [book, setBook] = useState(null);
 
-  useEffect(() => {
-    setLoading(true);
-    let ref = doc(db, "books", id);
-    onSnapshot(ref, (doc) => {
-      if (!doc.exists()) {
-        setError("Document not found");
-        setLoading(false);
-      } else {
-        let book = { id: doc.id, ...doc.data() };
-        setBook(book);
-        setLoading(false);
-        setError("");
-      }
-    })
-  }, [id]);
+  let { getDocument } = useFirestore();
+  let { error, loading, data: book } = getDocument("books", id);
   return (
     <>
       {error && <p>{error}</p>}
