@@ -95,7 +95,7 @@ export default function CreateBook() {
     } else {
       await addCollection("books", data);
     }
-    navigate("/books");
+    navigate("/");
   };
 
  

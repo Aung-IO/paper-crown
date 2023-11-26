@@ -52,7 +52,7 @@ export default function Navbar() {
             <li key={link.name} className="md:ml-8 md:my-0 my-2">
               <Link
                 to={link.link}
-                className="text-gray-800 hover:text-gray-400 duration-300 hover:underline"
+                className="text-gray-800 hover:text-gray-400 duration-300 hover:underline focus:text-blue-600"
               >
                 {link.name}
               </Link>

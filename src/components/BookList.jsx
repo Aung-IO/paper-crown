@@ -6,18 +6,18 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { AuthContext } from "../context/AuthContext";
 import useFirestore from "../hooks/useFirestore";
 
-function BookList() {
+function BookList(props) {
   let { user } = useContext(AuthContext);
   let location = useLocation();
   let param = new URLSearchParams(location.search);
   let search = param.get("search");
 
   let { getCollection, deleteDocument } = useFirestore();
-  let { error, loading, data: books } = getCollection("books");
+  let { error, loading, data: books } = getCollection(props.collectionName);
 
   let deleteBook = async (e, id) => {
     e.preventDefault();
-    await deleteDocument("books", id);
+    await deleteDocument(props.collectionName, id);
   };
 
   if (error) {

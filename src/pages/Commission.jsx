@@ -2,7 +2,7 @@ import React from "react";
 import BookList from "../components/BookList";
 
 export default function Commission() {
-  const path = "commission";
+  const collectionName = "commission";
   //need to create route for commission
   return (
     <>
@@ -19,7 +19,7 @@ export default function Commission() {
           </li> */}
           {/* Book List */}
           <li className="w-4/5">
-            <BookList path={path} />
+            <BookList collectionName={collectionName} />
           </li>
         </ul>
       </div>
