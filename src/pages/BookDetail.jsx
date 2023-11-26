@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import cover from "../assets/book_cover.png";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useFirestore from "../hooks/useFirestore";
 export default function BookDetail() {
@@ -16,7 +15,7 @@ export default function BookDetail() {
       {book && (
         <div className="grid grid-cols-2 mt-20">
           <div>
-            <img src={cover} alt="cover" className="w-[80%]" />
+            <img src={book.cover} alt="cover" className="w-[80%]" />
           </div>
 
           <div className="space-y-2">

@@ -1,14 +1,5 @@
-import {
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  orderBy,
-  query,
-} from "@firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import cover from "../assets/book_cover.png";
 import DeleteIcon from "../assets/icons/deleteIcon.svg";
 import EditIcon from "../assets/icons/editIcon.svg";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -43,7 +34,7 @@ function BookList() {
           {books.map((book) => (
             <Link to={`/books/${book.id}`} key={book.id}>
               <div className="p-4  border border-1">
-                <img src={cover} alt="" />
+                <img src={book.cover} alt="" />
                 <div className="text-center space-y-2 mt-3">
                   <h1>{book.title}</h1>
                   <p>${book.price}</p>

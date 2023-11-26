@@ -1,7 +1,8 @@
-import { doc, getDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { db } from "../firebase";
+import { db, storage } from "../firebase";
 import useFirestore from "../hooks/useFirestore";
 import TextAreaInput from "./TextAreaInput";
 
@@ -50,25 +51,6 @@ export default function CreateBook() {
     }
   }, []);
 
-  let submitForm = async (e) => {
-    e.preventDefault();
-    let data = {
-      title,
-      price,
-      dimension,
-      pages,
-      description,
-      author,
-    };
-
-    if (isEdit) {
-      await updateDocument("books", id, data);
-    } else {
-      await addCollection("books", data);
-    }
-    navigate("/books");
-  };
-
   let handleCoverImage = (e) => {
     setFile(e.target.files[0]);
   };
@@ -85,6 +67,38 @@ export default function CreateBook() {
       handlePreivewImage(file);
     }
   }, [file]);
+
+  let uploadToFirebase = async (file) => {
+    let uniqueFileName = Date.now().toString() + "_" + file.name;
+    let path = "/covers/" + uniqueFileName;
+    let storageRef = ref(storage, path);
+    await uploadBytes(storageRef, file);
+    return await getDownloadURL(storageRef);
+  };
+
+  let submitForm = async (e) => {
+    e.preventDefault();
+    let url = await uploadToFirebase(file);
+
+    let data = {
+      title,
+      price,
+      dimension,
+      pages,
+      description,
+      author,
+      cover: url,
+    };
+
+    if (isEdit) {
+      await updateDocument("books", id, data);
+    } else {
+      await addCollection("books", data);
+    }
+    navigate("/books");
+  };
+
+ 
 
   return (
     <form className="w-full max-w-lg mx-auto mt-4" onSubmit={submitForm}>
