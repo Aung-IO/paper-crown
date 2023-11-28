@@ -2,17 +2,20 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import useSignOut from "../hooks/useSignOut";
+import Modal from "./Modal";
 
 export default function Navbar() {
   let navigate = useNavigate();
   let { user } = useContext(AuthContext);
   let [search, setSearch] = useState("");
   let [open, setOpen] = useState(false);
+  let [isModalOpen, setIsModalOpen] = useState(false)
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
-  let handleSearch = (e) => {
-    e.preventDefault();
-    navigate(`/books${search ? `?search=${search}` : ""}`);
-    setSearch("");
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   let Links = [
@@ -60,21 +63,17 @@ export default function Navbar() {
           ))}
 
           <li className="flex md:pl-6">
-            <input
-              type="text"
-              placeholder="search books..."
-              className="outline-none md:w-32 w-36"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button onClick={handleSearch}>
+            
+            
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-5 h-5 cursor-pointer"
+                onClick={openModal}
+                
               >
                 <path
                   strokeLinecap="round"
@@ -82,9 +81,10 @@ export default function Navbar() {
                   d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                 />
               </svg>
-            </button>
+            
           </li>
         </ul>
+        <Modal isOpen={isModalOpen} onClose={closeModal} />
         <div className="flex gap-2 mt-2 md:mt-0">
         { !!user && <Link to="/create">
             <svg

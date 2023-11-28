@@ -17,6 +17,7 @@ export default function CreateBook() {
   let [preview, setPreview] = useState("");
   let [file, setFile] = useState(null);
   let [isEdit, setIsEdit] = useState(false);
+  let [collectionName, setCollectionName] = useState("");
   let navigate = useNavigate("");
 
   let { addCollection, updateDocument } = useFirestore();
@@ -25,7 +26,7 @@ export default function CreateBook() {
     // edit form
     if (id) {
       setIsEdit(true);
-      let ref = doc(db, "books", id);
+      let ref = doc(db, collectionName, id);
       getDoc(ref).then((doc) => {
         if (doc.exists()) {
           let { title, price, dimension, pages, description, author } =
@@ -91,14 +92,12 @@ export default function CreateBook() {
     };
 
     if (isEdit) {
-      await updateDocument("books", id, data);
+      await updateDocument(collectionName, id, data);
     } else {
-      await addCollection("books", data);
+      await addCollection(collectionName, data);
     }
     navigate("/");
   };
-
- 
 
   return (
     <form className="w-full max-w-lg mx-auto mt-4" onSubmit={submitForm}>
@@ -146,6 +145,7 @@ export default function CreateBook() {
           id="description"
           placeholder="Description"
         ></TextAreaInput>
+       
         {/* image upload */}
         <div className="mb-4">
           <label
@@ -157,7 +157,29 @@ export default function CreateBook() {
           <input type="file" name="" id="" onChange={handleCoverImage} />
           {!!preview && <img src={preview} className="mt-3"></img>}
         </div>
-        <div className="md:flex md:items-center">
+
+         {/* choose collection */}
+         <div className="flex gap-4">
+          <button
+            onClick={() => setCollectionName("books")}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:bg-red-500"
+          >
+            Books
+          </button>
+          <button
+            onClick={() => setCollectionName("commission")}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:bg-red-500"
+          >
+            Commission
+          </button>
+          <button
+            onClick={() => setCollectionName("og")}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:bg-red-500"
+          >
+            Original Arts
+          </button>
+        </div>
+        <div className="md:flex md:items-center mt-4">
           <div className="md:w-1/3"></div>
           <div className="md:w-2/3">
             <button

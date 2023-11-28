@@ -33,8 +33,8 @@ function BookList(props) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3">
           {books.map((book) => (
             <Link to={`/books/${book.id}`} key={book.id}>
-              <div className="p-4  border border-1">
-                <img src={book.cover} alt="" />
+              <div className="p-4 border border-1">
+                <img src={book.cover} alt="" className="max-h-56" />
                 <div className="text-center space-y-2 mt-3">
                   <h1>{book.title}</h1>
                   <p>${book.price}</p>
