@@ -8,27 +8,28 @@ import useFirestore from "../hooks/useFirestore";
 
 function BookList(props) {
   let { user } = useContext(AuthContext);
- 
+
   let [books, setBooks] = useState("");
   const [search, setSearch] = useState("");
 
   let { getCollection, deleteDocument } = useFirestore();
   let { error, loading, data: allBooks } = getCollection(props.collectionName);
+  
   let handleSearch = (e) => {
     e.preventDefault();
 
-   if (search) {
-    const filteredBooks = allBooks.filter((book) => {
+    if (search) {
+      const filteredBooks = allBooks.filter((book) => {
         return (
           book.title.toLowerCase().includes(search.toLowerCase()) ||
           book.author.toLowerCase().includes(search.toLowerCase())
         );
       });
       setBooks(filteredBooks);
-      
-      
-    } 
+    }
   };
+
+  
 
   let deleteBook = async (e, id) => {
     e.preventDefault();
@@ -41,22 +42,25 @@ function BookList(props) {
 
   return (
     <div>
-      {loading && <LoadingSpinner />}
+      
       <div className="flex justify-center ml-36">
-          <form onSubmit={handleSearch} className="flex justify-center mt-4">
-            <input
-              type="text"
-              placeholder="Search books"
-              className="w-96 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          
-          </form>
-          <button className="bg-white hover:bg-gray-100 text-gray-800 border border-gray-400 shadow font-bold py-2 px-4 h-10 mt-4 ml-3 rounded-md text-xs" onClick={()=> setBooks(allBooks)}>
-  Show all
-</button>
-        </div>
+        <form onSubmit={handleSearch} className="flex justify-center mt-4">
+          <input
+            type="text"
+            placeholder="Search books"
+            className="w-96 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </form>
+        <button
+          className="bg-white hover:bg-gray-100 text-gray-800 border border-gray-400 shadow font-bold py-2 px-4 h-10 mt-4 ml-3 rounded-md whitespace-nowrap "
+          onClick={() => setBooks(allBooks)}
+        >
+          <p className="text-xs">Show all</p>
+        </button>
+      </div>
+      {loading && <LoadingSpinner />}
       {/* book list */}
       {!!books && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3 mt-10">

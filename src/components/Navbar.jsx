@@ -6,16 +6,8 @@ import useSignOut from "../hooks/useSignOut";
 export default function Navbar() {
   let navigate = useNavigate();
   let { user } = useContext(AuthContext);
-  let [search, setSearch] = useState("");
   let [open, setOpen] = useState(false);
-  let [isModalOpen, setIsModalOpen] = useState(false)
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+ 
 
   let Links = [
     { name: "Home", link: "/" },
@@ -35,10 +27,10 @@ export default function Navbar() {
   return (
     <div className="shadow-md w-full fiex top-0 left-0">
       <div className="md:flex items-center justify-between  py-4 md:px-10 px-7">
-        <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
+        <Link to="/" className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
           <p className="text-lg">Paper Crown</p>
           <img src="../src/assets/web-logo.png" className="w-10 -mt-4 -ml-6" />
-        </div>
+        </Link>
         <div
           onClick={() => setOpen(!open)}
           className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
@@ -53,6 +45,7 @@ export default function Navbar() {
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 md:my-0 my-2">
               <Link
+              onClick={() => setOpen(false)}
                 to={link.link}
                 className="text-gray-800 hover:text-gray-400 duration-300 hover:underline focus:text-blue-600"
               >
@@ -64,7 +57,7 @@ export default function Navbar() {
 <div className="gap-4 mt-2 md:mt-0 md:flex md:ml-4 space-y-3 md:space-y-0">
         { !!user && <Link to="/create">
         <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
-       add Books
+       Add books
 </button>
           </Link>}
         { !user &&   <Link to="/login" >

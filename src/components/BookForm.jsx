@@ -145,7 +145,7 @@ export default function CreateBook() {
           id="description"
           placeholder="Description"
         ></TextAreaInput>
-       
+
         {/* image upload */}
         <div className="mb-4">
           <label
@@ -158,32 +158,35 @@ export default function CreateBook() {
           {!!preview && <img src={preview} className="mt-3"></img>}
         </div>
 
-         {/* choose collection */}
-         <div className="flex gap-4">
-          <button
-            onClick={() => setCollectionName("books")}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:bg-red-500"
-          >
-            Books
-          </button>
-          <button
-            onClick={() => setCollectionName("commission")}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:bg-red-500"
-          >
-            Commission
-          </button>
-          <button
-            onClick={() => setCollectionName("og")}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:bg-red-500"
-          >
-            Original Arts
-          </button>
-        </div>
-        <div className="md:flex md:items-center mt-4">
-          <div className="md:w-1/3"></div>
-          <div className="md:w-2/3">
+        {/* choose collection */}
+        <div className="flex text-sm gap-4 md:text-sm">
+          <p className="mt-1">Choose Collection : </p>
+          <div className="flex gap-4 justify-center">
             <button
-              className="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              onClick={() => setCollectionName("books")}
+              className="bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
+            >
+              Books
+            </button>
+            <button
+              onClick={() => setCollectionName("commission")}
+              className="bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
+            >
+              Commission
+            </button>
+            <button
+              onClick={() => setCollectionName("og")}
+              className="bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
+            >
+              Original Arts
+            </button>
+          </div>
+        </div>
+
+        <div className="flex justify-center mt-4">
+          <div>
+            <button
+              className="bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow"
               type="submit"
             >
               {isEdit ? "Edit" : "Create"} Book

@@ -18,11 +18,14 @@ function Home() {
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
-<div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
-    <Link to="/books" className="text-white hover:underline text-sm md:text-xl">
-      Books
-    </Link>
-  </div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
+                <Link
+                  to="/books"
+                  className="text-white hover:underline text-sm md:text-xl"
+                >
+                  Books
+                </Link>
+              </div>
             </div>
           </li>
           <li>
@@ -32,11 +35,14 @@ function Home() {
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
-<div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
-    <Link to="/books" className="text-white hover:underline text-sm md:text-xl">
-      Commission
-    </Link>
-  </div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
+                <Link
+                  to="/commission"
+                  className="text-white hover:underline text-sm md:text-xl"
+                >
+                  Commission
+                </Link>
+              </div>
             </div>
           </li>
           <li>
@@ -46,11 +52,14 @@ function Home() {
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
-<div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
-    <Link to="/books" className="text-white hover:underline text-sm md:text-xl">
-      Original Arts
-    </Link>
-  </div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
+                <Link
+                  to="/origianl_arts"
+                  className="text-white hover:underline text-sm md:text-xl"
+                >
+                  Original Arts
+                </Link>
+              </div>
             </div>
           </li>
         </ul>
