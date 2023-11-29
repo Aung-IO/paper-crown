@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import DeleteIcon from "../assets/icons/deleteIcon.svg";
 import EditIcon from "../assets/icons/editIcon.svg";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -8,12 +8,27 @@ import useFirestore from "../hooks/useFirestore";
 
 function BookList(props) {
   let { user } = useContext(AuthContext);
-  let location = useLocation();
-  let param = new URLSearchParams(location.search);
-  let search = param.get("search");
+ 
+  let [books, setBooks] = useState("");
+  const [search, setSearch] = useState("");
 
   let { getCollection, deleteDocument } = useFirestore();
-  let { error, loading, data: books } = getCollection(props.collectionName);
+  let { error, loading, data: allBooks } = getCollection(props.collectionName);
+  let handleSearch = (e) => {
+    e.preventDefault();
+
+   if (search) {
+    const filteredBooks = allBooks.filter((book) => {
+        return (
+          book.title.toLowerCase().includes(search.toLowerCase()) ||
+          book.author.toLowerCase().includes(search.toLowerCase())
+        );
+      });
+      setBooks(filteredBooks);
+      
+      
+    } 
+  };
 
   let deleteBook = async (e, id) => {
     e.preventDefault();
@@ -27,14 +42,28 @@ function BookList(props) {
   return (
     <div>
       {loading && <LoadingSpinner />}
-
+      <div className="flex justify-center ml-36">
+          <form onSubmit={handleSearch} className="flex justify-center mt-4">
+            <input
+              type="text"
+              placeholder="Search books"
+              className="w-96 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          
+          </form>
+          <button className="bg-white hover:bg-gray-100 text-gray-800 border border-gray-400 shadow font-bold py-2 px-4 h-10 mt-4 ml-3 rounded-md text-xs" onClick={()=> setBooks(allBooks)}>
+  Show all
+</button>
+        </div>
       {/* book list */}
       {!!books && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3 mt-10">
           {books.map((book) => (
             <Link to={`/books/${book.id}`} key={book.id}>
               <div className="p-4 border border-1">
-                <img src={book.cover} alt="" className="max-h-56" />
+                <img src={book.cover} alt="" className="max-h-36" />
                 <div className="text-center space-y-2 mt-3">
                   <h1>{book.title}</h1>
                   <p>${book.price}</p>
