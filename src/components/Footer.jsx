@@ -80,7 +80,7 @@ export default function Footer() {
 
       {/* <!-- Main container div: holds the entire content of the footer, including four sections (TW elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. --> */}
       <div className="mx-6 py-10 text-center md:text-left">
-        <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
           {/* <!-- TW elements section --> */}
           <div>
             <h6 className="-mb-1 flex items-center justify-center font-semibold  md:justify-start -mt-4 -ml-3">
@@ -92,11 +92,13 @@ export default function Footer() {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </p>
           </div>
+          
           {/* <!-- Products section --> */}
-          <div>
-            <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-              Products
+          <div >
+            <h6 className="mb-3 flex justify-center font-semibold uppercase md:justify-start">
+             Our Products
             </h6>
+            <div className="grid-1 grid grid-cols-2 md:grid-cols-none text-sm md:text-md">
             <p className="mb-4">
               <Link>Comics</Link>
             </p>
@@ -109,30 +111,16 @@ export default function Footer() {
             <p>
               <Link>The Footage</Link>
             </p>
+            </div>
           </div>
-          {/* <!-- Useful links section --> */}
-          <div>
-            <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-              Useful links
-            </h6>
-            <p className="mb-4">
-              <Link>Pricing</Link>
-            </p>
-            <p className="mb-4">
-              <Link>Settings</Link>
-            </p>
-            <p className="mb-4">
-              <Link>Orders</Link>
-            </p>
-            <p>
-              <Link>Help</Link>
-            </p>
-          </div>
+          
+          
           {/* <!-- Contact section --> */}
           <div>
             <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-              Contact
+              Contact Us
             </h6>
+            <div  className="grid-1 grid grid-cols-2 md:grid-cols-none text-sm md:text-md">
             <p className="mb-4 flex items-center justify-center md:justify-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +145,7 @@ export default function Footer() {
               </svg>
               info@example.com
             </p>
-            <p className="mb-4 flex items-center justify-center md:justify-start">
+            <p className="mb-4 flex items-center justify-center md:justify-start mr-10">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -172,7 +160,7 @@ export default function Footer() {
               </svg>
               + 01 234 567 88
             </p>
-            <p className="flex items-center justify-center md:justify-start">
+            <p className="flex items-center justify-center md:justify-start mr-4 mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -187,6 +175,7 @@ export default function Footer() {
               </svg>
               + 01 234 567 89
             </p>
+            </div>
           </div>
         </div>
       </div>

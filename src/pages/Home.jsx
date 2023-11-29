@@ -18,11 +18,11 @@ function Home() {
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
-              <div className="absolute bottom-20 text-white text-xl mx-36 cursor-pointer">
-                <Link to="/books" className=" text-white hover:underline">
-                  Books
-                </Link>
-              </div>
+<div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
+    <Link to="/books" className="text-white hover:underline text-sm md:text-xl">
+      Books
+    </Link>
+  </div>
             </div>
           </li>
           <li>
@@ -32,9 +32,11 @@ function Home() {
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
-              <div className="absolute bottom-20 text-white text-xl mx-24 px-5">
-                <p className=" text-white hover:underline">Commission</p>
-              </div>
+<div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
+    <Link to="/books" className="text-white hover:underline text-sm md:text-xl">
+      Commission
+    </Link>
+  </div>
             </div>
           </li>
           <li>
@@ -44,9 +46,11 @@ function Home() {
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
-              <div className="absolute bottom-20 text-white text-xl mx-20 px-10">
-                <p className=" text-white hover:underline">Original Art</p>
-              </div>
+<div className="absolute inset-0 flex flex-col justify-center items-center text-white text-xl">
+    <Link to="/books" className="text-white hover:underline text-sm md:text-xl">
+      Original Arts
+    </Link>
+  </div>
             </div>
           </li>
         </ul>

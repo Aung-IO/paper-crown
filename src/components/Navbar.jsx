@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import useSignOut from "../hooks/useSignOut";
-import Modal from "./Modal";
 
 export default function Navbar() {
   let navigate = useNavigate();
@@ -62,45 +61,11 @@ export default function Navbar() {
             </li>
           ))}
 
-          <li className="flex md:pl-6">
-            
-            
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-5 h-5 cursor-pointer"
-                onClick={openModal}
-                
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                />
-              </svg>
-            
-          </li>
-        </ul>
-        <Modal isOpen={isModalOpen} onClose={closeModal} />
-        <div className="flex gap-2 mt-2 md:mt-0">
+<div className="gap-4 mt-2 md:mt-0 md:flex md:ml-4 space-y-3 md:space-y-0">
         { !!user && <Link to="/create">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="md:w-8 w-6 md:h-6 h-5 cursor-pointer mt-1 "
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+        <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
+       add Books
+</button>
           </Link>}
         { !user &&   <Link to="/login" >
         <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
@@ -113,6 +78,9 @@ export default function Navbar() {
             
           </button>}
         </div>
+        </ul>
+        
+        
       </div>
     </div>
   );
