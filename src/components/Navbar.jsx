@@ -7,14 +7,12 @@ export default function Navbar() {
   let navigate = useNavigate();
   let { user } = useContext(AuthContext);
   let [open, setOpen] = useState(false);
- 
 
   let Links = [
     { name: "Home", link: "/" },
     { name: "Books", link: "/books" },
     { name: "Commission", link: "/commission" },
     { name: "Original Arts", link: "/origianl_arts" },
-    { name: "FAQs", link: "/faqs" },
     { name: "Contact Us", link: "/contact" },
   ];
 
@@ -25,15 +23,18 @@ export default function Navbar() {
   };
 
   return (
-    <div className="shadow-md w-full fiex top-0 left-0">
-      <div className="md:flex items-center justify-between  py-4 md:px-10 px-7">
-        <Link to="/" className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
+    <div className="shadow-md w-full top-0 left-0">
+      <div className="md:flex py-4 md:px-10">
+        <Link
+          to="/"
+          className="font-bold text-2xl cursor-pointer flex items-center text-gray-800 ml-4"
+        >
           <p className="text-lg">Paper Crown</p>
           <img src="../src/assets/web-logo.png" className="w-10 -mt-4 -ml-6" />
         </Link>
         <div
           onClick={() => setOpen(!open)}
-          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+          className="text-3xl absolute right-8 top-4 cursor-pointer md:hidden"
         >
           <ion-icon name={open ? "close" : "menu"}></ion-icon>
         </div>
@@ -45,7 +46,7 @@ export default function Navbar() {
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 md:my-0 my-2">
               <Link
-              onClick={() => setOpen(false)}
+                onClick={() => setOpen(false)}
                 to={link.link}
                 className="text-gray-800 hover:text-gray-400 duration-300 hover:underline focus:text-blue-600"
               >
@@ -54,26 +55,31 @@ export default function Navbar() {
             </li>
           ))}
 
-<div className="gap-4 mt-2 md:mt-0 md:flex md:ml-4 space-y-3 md:space-y-0">
-        { !!user && <Link to="/create">
-        <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
-       Add books
-</button>
-          </Link>}
-        { !user &&   <Link to="/login" >
-        <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
-       Login
-</button>
-          
-          </Link>}
-          {!!user && <button onClick={singOutUser} className=" bg-white  hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow" >
-            Logout
-            
-          </button>}
-        </div>
+          <div className="gap-4 mt-2 md:mt-0 md:flex md:ml-4 space-y-3 md:space-y-0 ">
+            {!!user && (
+              <Link to="/create">
+                <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
+                  Add books
+                </button>
+              </Link>
+            )}
+            {!user && (
+              <Link to="/login">
+                <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
+                  Login
+                </button>
+              </Link>
+            )}
+            {!!user && (
+              <button
+                onClick={singOutUser}
+                className=" bg-white  hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow"
+              >
+                Logout
+              </button>
+            )}
+          </div>
         </ul>
-        
-        
       </div>
     </div>
   );
