@@ -58,7 +58,7 @@ export default function index() {
           element: isAuthenticated ? <BookForm /> : <Navigate to='/login'/>,
         },
         {
-          path: "/edit/:id",
+          path: "/edit/:path/:id",
           element: isAuthenticated ? <BookForm /> : <Navigate to='/login'/>,
         },
         {

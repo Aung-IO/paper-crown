@@ -74,7 +74,7 @@ function BookList(props) {
                 </div>
                 {!!user && (
                   <div className="flex justify-end space-x-2">
-                    <Link to={`/edit/${book.id}`}>
+                    <Link to={`/edit/${props.collectionName}/${book.id}`}>
                       {" "}
                       <img src={EditIcon} />
                     </Link>

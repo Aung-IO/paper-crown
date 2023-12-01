@@ -8,6 +8,7 @@ import TextAreaInput from "./TextAreaInput";
 
 export default function CreateBook() {
   let { id } = useParams();
+  let {path} = useParams();
   let [title, setTitle] = useState("");
   let [price, setPrice] = useState("");
   let [dimension, setDimension] = useState("");
@@ -24,9 +25,9 @@ export default function CreateBook() {
 
   useEffect(() => {
     // edit form
-    if (id) {
+    if (id,path) {
       setIsEdit(true);
-      let ref = doc(db, collectionName, id);
+      let ref = doc(db, path, id);
       getDoc(ref).then((doc) => {
         if (doc.exists()) {
           let { title, price, dimension, pages, description, author } =
@@ -92,7 +93,7 @@ export default function CreateBook() {
     };
 
     if (isEdit) {
-      await updateDocument(collectionName, id, data);
+      await updateDocument(path, id, data);
     } else {
       await addCollection(collectionName, data);
     }
