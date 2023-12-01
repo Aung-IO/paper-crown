@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DeleteIcon from "../assets/icons/deleteIcon.svg";
 import EditIcon from "../assets/icons/editIcon.svg";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -8,13 +8,13 @@ import useFirestore from "../hooks/useFirestore";
 
 function BookList(props) {
   let { user } = useContext(AuthContext);
-
+  let navigate = useNavigate();
   let [books, setBooks] = useState("");
   const [search, setSearch] = useState("");
 
   let { getCollection, deleteDocument } = useFirestore();
   let { error, loading, data: allBooks } = getCollection(props.collectionName);
-  
+
   let handleSearch = (e) => {
     e.preventDefault();
 
@@ -29,8 +29,6 @@ function BookList(props) {
     }
   };
 
-  
-
   let deleteBook = async (e, id) => {
     e.preventDefault();
     await deleteDocument(props.collectionName, id);
@@ -42,7 +40,6 @@ function BookList(props) {
 
   return (
     <div>
-      
       <div className="flex justify-center ml-36">
         <form onSubmit={handleSearch} className="flex justify-center mt-4">
           <input
@@ -67,17 +64,21 @@ function BookList(props) {
           {books.map((book) => (
             <Link to={`/books/${book.id}`} key={book.id}>
               <div className="p-4 border border-1">
-                <img src={book.cover} alt="" className="max-h-36" />
+                <img src={book.cover} alt="" className="h-56" />
                 <div className="text-center space-y-2 mt-3">
                   <h1>{book.title}</h1>
                   <p>${book.price}</p>
                 </div>
                 {!!user && (
                   <div className="flex justify-end space-x-2">
-                    <Link to={`/edit/${props.collectionName}/${book.id}`}>
-                      {" "}
-                      <img src={EditIcon} />
-                    </Link>
+                    <img
+                      src={EditIcon}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        navigate(`/edit/${props.collectionName}/${book.id}`);
+                      }}
+                    />
+
                     <img
                       src={DeleteIcon}
                       onClick={(e) => deleteBook(e, book.id)}
