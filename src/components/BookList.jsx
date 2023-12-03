@@ -14,7 +14,7 @@ function BookList(props) {
 
   let { getCollection, deleteDocument } = useFirestore();
   let { error, loading, data: allBooks } = getCollection(props.collectionName);
-
+  
   let handleSearch = (e) => {
     e.preventDefault();
 
@@ -26,12 +26,15 @@ function BookList(props) {
         );
       });
       setBooks(filteredBooks);
+    } else {
+      setBooks(allBooks);
     }
   };
 
   let deleteBook = async (e, id) => {
     e.preventDefault();
     await deleteDocument(props.collectionName, id);
+    setBooks(prev => prev.filter( book => book.id != id))
   };
 
   if (error) {
@@ -66,8 +69,8 @@ function BookList(props) {
               <div className="p-4 border border-1">
                 <img src={book.cover} alt="" className="h-56" />
                 <div className="text-center space-y-2 mt-3">
-                  <h1>{book.title}</h1>
-                  <p>${book.price}</p>
+                  <h1>Title : {book.title}</h1>
+                  <p>by - {book.author}</p>
                 </div>
                 {!!user && (
                   <div className="flex justify-end space-x-2">
