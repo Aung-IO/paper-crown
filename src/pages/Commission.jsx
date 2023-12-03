@@ -6,10 +6,10 @@ export default function Commission() {
   //need to create route for commission
   return (
     <>
-      <div className="text-5xl text-center items-center p-14 font-mono bg-zinc-50">
+      <div className="text-5xl text-center items-center p-7 md:p-14 font-mono bg-zinc-50">
         <span>Commission</span>
       </div>
-
+ 
       <div>
         {/* Book List */}
         <div>
