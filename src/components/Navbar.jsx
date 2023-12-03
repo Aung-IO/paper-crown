@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/images/web-logo.png";
 import { AuthContext } from "../context/AuthContext";
 import useSignOut from "../hooks/useSignOut";
 
@@ -18,6 +19,7 @@ export default function Navbar() {
 
   let { logout } = useSignOut();
   let singOutUser = async () => {
+    setOpen(false)
     await logout();
     navigate("/login");
   };
@@ -30,7 +32,7 @@ export default function Navbar() {
           className="font-bold text-2xl cursor-pointer flex items-center text-gray-800 ml-4"
         >
           <p className="text-lg">Paper Crown</p>
-          <img src="../src/assets/web-logo.png" className="w-10 -mt-4 -ml-6" />
+          <img src={Logo} className="w-10 -mt-4 -ml-6" />
         </Link>
         <div
           onClick={() => setOpen(!open)}
@@ -55,16 +57,16 @@ export default function Navbar() {
             </li>
           ))}
 
-          <div className="gap-4 mt-2 md:mt-0 md:flex md:ml-4 space-y-3 md:space-y-0 ">
+          <div className="md:gap-4 mt-2 md:mt-0 md:flex md:ml-4 space-y-3 md:space-y-0 ">
             {!!user && (
-              <Link to="/create">
-                <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
+              <Link to="/create" onClick={() => setOpen(false)}>
+                <button className="text-sm md:text-base bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
                   Add books
                 </button>
               </Link>
             )}
             {!user && (
-              <Link to="/login">
+              <Link to="/login" onClick={() => setOpen(false)}>
                 <button className=" bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow">
                   Login
                 </button>
@@ -73,7 +75,7 @@ export default function Navbar() {
             {!!user && (
               <button
                 onClick={singOutUser}
-                className=" bg-white  hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow"
+                className="text-sm md:text-base bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow"
               >
                 Logout
               </button>

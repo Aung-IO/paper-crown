@@ -42,13 +42,13 @@ function BookList(props) {
   }
 
   return (
-    <div>
-      <div className="flex justify-center ml-36">
+    <>
+      <div className="flex justify-center mt-2">
         <form onSubmit={handleSearch} className="flex justify-center mt-4">
           <input
             type="text"
             placeholder="Search books"
-            className="w-96 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+            className="w-45 md:w-80 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -60,20 +60,20 @@ function BookList(props) {
           <p className="text-xs">Show all</p>
         </button>
       </div>
-      {loading && <LoadingSpinner />}
       {/* book list */}
       {!!books && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-3 mt-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 my-3 mt-10 ">
+          {loading && <LoadingSpinner />}
           {books.map((book) => (
-            <Link to={`/books/${book.id}`} key={book.id}>
-              <div className="p-4 border border-1">
-                <img src={book.cover} alt="" className="h-56" />
+            <Link to={`/${props.collectionName}/${book.id}`} key={book.id}>
+              <div className="pb-1 ">
+                <img src={book.cover} alt="cover" className="" />
                 <div className="text-center space-y-2 mt-3">
-                  <h1>Title : {book.title}</h1>
-                  <p>by - {book.author}</p>
+                  <h1>{book.title}</h1>
+                  <p>by : {book.author}</p>
                 </div>
                 {!!user && (
-                  <div className="flex justify-end space-x-2">
+                  <div className="flex justify-end space-x-2 pt-2">
                     <img
                       src={EditIcon}
                       onClick={(e) => {
@@ -99,7 +99,7 @@ function BookList(props) {
           Hmmm, we didn't find anything for "{search}"
         </p>
       )}
-    </div>
+    </>
   );
 }
 

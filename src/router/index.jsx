@@ -34,7 +34,7 @@ export default function index() {
           element: <Books />,
         },
         {
-          path: "/books/:id",
+          path: "/:path/:id",
           element: <BookDetail />,
         },
         {

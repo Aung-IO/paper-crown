@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/images/web-logo.png";
 
 export default function Footer() {
   return (
@@ -83,11 +84,11 @@ export default function Footer() {
         <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
           {/* <!-- TW elements section --> */}
           <div>
-            <h6 className="-mb-1 flex items-center justify-center font-semibold  md:justify-start -mt-4 -ml-3">
-              <img src="../src/assets/icon.svg" className="w-14" />
+            <p className="-mb-1 flex items-center justify-center font-semibold text-sm md:text-lg md:justify-start -mt-4 -ml-3">
+              <img src={Logo} className="w-14" />
               PAPER CROWN DROP HERE !
-            </h6>
-            <p>
+            </p>
+            <p className="text-ellipsis">
               Here you can use rows and columns to organize your footer content.
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             </p>

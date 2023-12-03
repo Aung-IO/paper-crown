@@ -11,17 +11,10 @@ export default function Commission() {
       </div>
 
       <div>
-        <ul className="flex m-8">
-          {/* Filter */}
-          {/* <li className="w-1/5 p-5">
-            
-            <Filter baseRoute={baseRoute} />
-          </li> */}
-          {/* Book List */}
-          <li className="w-4/5">
-            <BookList collectionName={collectionName} />
-          </li>
-        </ul>
+        {/* Book List */}
+        <div>
+          <BookList collectionName={collectionName} />
+        </div>
       </div>
     </>
   );

@@ -160,24 +160,24 @@ export default function CreateBook() {
         </div>
 
         {/* choose collection */}
-        <div className="flex text-sm gap-4 md:text-sm">
+        <div className="flex text-xs md:text-base ">
           <p className="mt-1">Choose Collection : </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex md:ml-3 gap-4 justify-center text-xs md:text-sm">
             <button
               onClick={() => setCollectionName("books")}
-              className="bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
+              className=" bg-white hover:bg-gray-100 text-gray-800 px-2 -mx-2 md:py-1 md:px-3 ml-1 md:ml-0  border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
             >
               Books
             </button>
             <button
               onClick={() => setCollectionName("commission")}
-              className="bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
+              className=" bg-white hover:bg-gray-100 text-gray-800 px-2 -mx-2  md:px-3 ml-1 border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
             >
               Commission
             </button>
             <button
               onClick={() => setCollectionName("og")}
-              className="bg-white hover:bg-gray-100 text-gray-800  py-1 px-3  border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
+              className=" bg-white hover:bg-gray-100 text-gray-800 px-2 -mx-2  md:px-3  ml-1 border border-gray-400 rounded shadow focus:bg-gray-600 focus:text-white"
             >
               Original Arts
             </button>

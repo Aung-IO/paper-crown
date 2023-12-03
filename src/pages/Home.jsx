@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
+import Cover from "../assets/images/cover.jpg";
+import Cover1 from "../assets/images/cover1.jpg";
+import HomeBg1 from "../assets/images/home-bg.png";
+import HomeBg2 from "../assets/images/home-bg2.png";
+import HomeBg3 from "../assets/images/home-bg3.png";
 
 function Home() {
-  return (
+  return ( 
     <>
-      <img src="../src/assets/cover.jpg" className="w-full" />
+      <img src={Cover} className="w-full" />
 
       <div className="mt-10 text-center text-2xl">
         <h2>Collection list</h2>
@@ -14,7 +19,7 @@ function Home() {
           <li>
             <div className="relative bg-slate-300 w-full">
               <img
-                src="../src/assets/home-bg.png"
+                src={HomeBg1}
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
@@ -31,7 +36,7 @@ function Home() {
           <li>
             <div className="relative bg-slate-400 w-full">
               <img
-                src="../src/assets/home-bg2.png"
+                src={HomeBg2}
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
@@ -48,7 +53,7 @@ function Home() {
           <li>
             <div className="relative bg-slate-400 w-full">
               <img
-                src="../src/assets/home-bg3.png"
+                src={HomeBg3}
                 className="max-h-64 object-cover mix-blend-multiply"
               />
 
@@ -67,21 +72,21 @@ function Home() {
 
       <div className="relative mt-10 bg-slate-200">
         <img
-          src="../src/assets/cover1.jpg"
+          src={Cover1}
           className="object-cover mix-blend-multiply w-full"
         />
 
         <div className="absolute text-white inset-0 flex items-center justify-center">
           <ul className="space-y-3">
-            <li className=" text-3xl font-sans">
+            <li className="text-sm md:text-3xl font-sans ml-20 md:ml-0">
               <p>PAPER CROWN ARTISTS</p>
             </li>
-            <li className="mx-10 text-lg">
+            <li className="mx-16 md:mx-10 text-sm md:text-lg ">
               <p>Click to view creative process</p>
             </li>
 
             <li className="mx-24">
-              <button className="bg-white hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border-2 border-black  rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+              <button className=" text-xs md:text-lg bg-white hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border-2 border-black  rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                 LEARN MORE
               </button>
             </li>
