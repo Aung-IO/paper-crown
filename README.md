@@ -26,3 +26,6 @@ To deploy this project run on Ubuntu
 - Light/dark mode toggle
 - Cross platform
 
+## Project Link
+
+- https://paper-crown-48ae3.web.app/
